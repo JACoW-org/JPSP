@@ -1,0 +1,225 @@
+
+/*
+ version 4.0 - 06 Nov 2020 - vrws
+*/
+body {
+			padding: 0;
+			margin: 20px;
+			width: 700px;
+			font-family: Dejavu Sans, Calibri, Arial, times;
+		}
+
+	@media
+	only screen and (max-width: 760px),
+	(min-device-width: 768px) and (max-device-width: 1024px)  {
+		body {
+			padding: 0;
+			margin: 20px;
+			width: 700px; 
+		}
+	}
+
+	/* Smartphones (portrait and landscape) ----------- */
+	@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 480px) {
+		body {
+			padding: 0;
+			margin: 20px;
+			width: 320px; }
+		}
+
+	/* iPads (portrait and landscape) ----------- */
+	@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+		body {	
+			padding: 0;
+			margin: 20px;
+			width: 495px;
+		}
+	}
+
+img {
+    border: 0;
+}
+
+.intro {
+	margin: 1em 1em;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.doitabledef
+    {
+     border-spacing:         4px 4px;
+/*     border-padding:         4px;   does not exist */
+     text-align:             center;
+     vertical-align:         middle;
+    }
+	
+.doiheader
+   {
+    background:             #eeeeff;
+    -moz-box-shadow:        4px 4px 20px #000000;
+    -webkit-box-shadow:     4px 4px 20px #000000;
+    box-shadow:             4px 4px 20px #000000;
+    -moz-border-radius:     12px;
+    -webkit-border-radius:  12px;
+    border-radius:          12px;
+    padding:                12px;
+    margin:                 12px;
+    display:                inline-block; 
+    behavior:               url(PIE.htc);
+    text-align:             center;
+    font-weight:            bold;
+    font-size:              130%;
+	white-space: 			nowrap;
+   }
+
+.tablerow  /* paper code */
+    {
+     text-align:             left;
+     vertical-align:         middle;
+    }
+
+.fieldgrp {
+     color:                     #ffffff;
+     background-color:        	#3399FF;
+     font-size:                  1em;
+     -moz-border-radius:         8px;
+     -webkit-border-radius:      8px;
+     border-radius:              8px;
+     padding:                    6px;
+     margin:                    10px 2px 0;
+     text-align:                 left;
+     -moz-box-shadow:            2px 2px 4px #000000;
+     -webkit-box-shadow:         2px 2px 4px #000000;
+     box-shadow:                 2px 2px 4px #000000;
+     behavior:                   url(PIE.htc);
+}
+
+.fieldhigh {
+     background-color:           #80c1ff;
+     font-weight:                bold;
+     font-size:                  1em;
+     -moz-border-radius:         8px;
+     -webkit-border-radius:      8px;
+     border-radius:              8px;
+     padding:                    6px;
+     margin:                     10px; /* 2px 0px; */
+     display:                    block;        /*    egal */
+     text-align:                 left;
+     -moz-box-shadow:            2px 2px 4px #000000;
+     -webkit-box-shadow:         2px 2px 4px #000000;
+     box-shadow:                 2px 2px 4px #000000;
+     behavior:                   url(PIE.htc);
+}
+
+.fieldkey
+    {
+     background-color:           #c0e0ff;
+     font-size:                  1em;
+     -moz-border-radius:         8px;
+     -webkit-border-radius:      8px;
+     border-radius:              8px;
+     padding:                    6px;
+     margin:                    10px 2px 0;
+     text-align:                 left;
+     -moz-box-shadow:            2px 2px 4px #000000;
+     -webkit-box-shadow:         2px 2px 4px #000000;
+     box-shadow:                 2px 2px 4px #000000;
+     behavior:                   url(PIE.htc);
+}
+
+
+.abstract
+   {
+    background:            #eeeeff;
+    -moz-border-radius:    12px;
+    -webkit-border-radius: 12px;
+    border-radius:         12px;
+    padding:                8px;
+    margin:                 0;
+    margin-bottom:          0;
+    margin-top:             0;
+    text-align:             justify;
+    display:                block;
+    behavior:               url(PIE.htc);
+   }
+
+.datarow
+   {
+    background:            #eeeeee;
+    -moz-border-radius:    12px;
+    -webkit-border-radius: 12px;
+    border-radius:         12px;
+    padding:                8px;
+    margin:                 0;
+    margin-bottom:          0;
+    margin-top:             0;
+    text-align:             justify;
+	/*  vertical-align: 		middle;  middle not possible with block */
+    display:                block;
+    behavior:               url(PIE.htc);
+   }
+
+.datarowleft
+   {
+    background:            #eeeeee;
+    -moz-border-radius:    12px;
+    -webkit-border-radius: 12px;
+    border-radius:         12px;
+    padding:                8px;
+    margin:                 0;
+    margin-bottom:          0;
+    margin-top:             0;
+    text-align:             left;
+	/*  vertical-align: 		middle;  middle not possible with block */
+    display:                block;
+    behavior:               url(PIE.htc);
+   }
+   
+.datarow2
+   {
+    background:            #eeeeee;
+    -moz-border-radius:    12px;
+    -webkit-border-radius: 12px;
+    border-radius:         12px;
+    padding:                8px;
+    margin:                 0;
+    margin-bottom:          0;
+    margin-top:             0;
+	line-height: 			30px;
+    text-align:             justify;
+	/*  vertical-align: 		middle;  middle not possible with block */
+    display:                block;
+    behavior:               url(PIE.htc);
+   }
+
+
+.author_cl { 
+	text-align:             left;
+	color:                 	rgb(51, 51, 255); 
+}
+/*
+  marked Author is Presenter
+*/
+   .presenter {
+	text-decoration:   			underline;
+        white-space:			nowrap;
+   }
+   .presentertxt {
+		position:       		absolute;
+        left:           		-10px;
+        bottom:          		18px;
+        white-space:			nowrap; 
+        color:          		#fff;       /* !important; */
+        background-color:		#f44336;   /* !important; */
+        font-size:				12px;      /* !important; */
+        display:				inline-block;
+        padding:				2px 8px 2px 8px;
+        text-align:				center;
+       }
+.tooltip {position:relative}
+.tooltip .pr-text{display:none}
+.tooltip:hover .pr-text{display:inline-block}
+

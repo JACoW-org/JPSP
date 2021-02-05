@@ -1,0 +1,263 @@
+\pdfobjcompresslevel=0
+\pdfcompresslevel=0
+\pdfminorversion=3
+
+%\documentclass[9pt,pagesize,headexclude,footexclude,halfparskip-]{scrbook}
+\documentclass[fontsize=9pt,twoside]{scrbook}
+
+\setlength\parindent{0pt}
+
+\usepackage{fourier}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ifthen}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage[uprightGreek]{newtxmath}
+\usepackage{microtype}
+\usepackage{calc}
+\usepackage{scrpage2}
+\usepackage[scaled=.95]{helvet}
+\usepackage[scaled=.92]{beramono}   %.92
+\usepackage[papersize={148mm,210mm}, twoside, bindingoffset=10mm, %, showframe
+            top=12mm, bottom=10mm, inner=10mm, outer=16mm, footskip=20pt, headsep=0pt]{geometry}
+
+\usepackage{hyperref}
+\hypersetup{pdfpagelayout=TwoPageRight,
+            pdfstartview=Fit,
+            pdfpagemode=UseNone,
+            linktocpage=false,
+            pdfborder={0 0 0},
+            colorlinks=false,
+            unicode=true,
+            pdftitle={IPAC2014 - Oral Presentations},
+            pdfauthor={Volker RW Schaa, GSI Helmholtzzentrum für Schwerionenforschung, Darmstadt, Germany},
+            pdfsubject={Extract of Oral Presentations from IPAC2014 Conference Guide},
+}
+
+\usepackage[normalem]{ulem}
+\usepackage{fancybox}
+
+\hyphenation{Qua-dru-poles Qua-dru-pole Mik-hai-li-chen-ko Ka-na-rey-kin Tka-chen-ko Fak-to-ro-vich Du-brov-skiy Most-haf Iva-ni-sen-ko Neu-bauer Ja-mil-kow-ski Teru-nu-ma Po-pie-lar-ski Tera-shi-ma Ya-ra-my-shev Ko-zhu-ha-rov Win-kel-mann Ratzin-ger Smir-nov Floett-mann Buerk-mann-Gehr-lein Pal-mie-ri Ko-she-lev Chou-han Ga-vri-lov Cle-men-te Kraw-czyk Ko-ba-ya-shi So-be-nin Buerk-mann-Gehr-lein Yoshi-ka-wa Pas-qui-nel-li Yoko-ya-ma Mar-chet-to Ya-kov-lev Tiu-nov Gu-sa-ro-va Tan-ta-wi Mat-veen-ko Sche-los-ke De-mon-stra-tor Ko-no-nen-ko Shem-ya-kin Reitz-ner Frei-tag Shki-tov Na-ka-ni-shi Ta-ka-gi Pi-guiet Oss-wald Karls-ru-he Wa-ta-na-be Le-percq
+Hoff-staet-ter Schönauer Ficca-den-ti Se-ra-fi-ni Gher-ghe-reh-chi Va-li-za-deh Mo-ri-shi-ta Satt-ler Mo-lo-do-zhen-tsev}
+
+\tolerance=2000
+\setlength{\emergencystretch}{6pt}
+
+\newcommand\high[1]{\textsuperscript{#1}}
+\newcommand\low[1]{\textsubscript{#1}}
+%\newcommand\high[1]{\ensuremath{\mathrm{$^#1$}}}
+%\newcommand\low[1]{\ensuremath{\mathrm{$_#1$}}}
+%%%\newcommand\high[1]{\ensuremath{^#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  circol 01:Circular Colliders:100,64,61
+%  synlig 02:Synchrotron Light Sources and FELs;100,75,30
+%  lincol 03:Linear Colliders, Lepton Accelerators and New Acceleration Techniques:75,91,56
+%  hadacc 04:Hadron Accelerators:90,94,56
+%  beadyn 05:Beam Dynamics and Electromagnetic Fields:100,77,0
+%  beains 06:Beam Instrumentation and Feedback:62,58,58
+%  acctec 07:Accelerator Technology:78,39,50
+%  appacc 08:Applications of Accelerators, Technology Transfer and Industrial Relations:100,100,35
+%  opeclo 09:Opening and Closing Sessions, Prize, Special Presentation:00,71,76
+%  posses 10:Poster Session:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  circol  1 Circular Colliders (1)
+%  synlig  2 Synchrotron Light Sources and FELs (2)
+%  paralt  3 Particle Sources and Alternative Acceleration Techniques (3)
+%           lincol  3 Linear Colliders, Lepton Accelerators and New Acceleration Techniques (3)
+%  hadacc  4 Hadron Accelerators (4)
+%  beadyn  5 Beam Dynamics and Electromagnetic Fields
+%  beains  6 Beam Instrumentation and Feedback (6)
+%  acctec  7 Accelerator Technology (7)
+%  appacc  8 Applications of Accelerators, Technology Transfer and Industrial Relations (8)
+%  opeclo    Opening, Closing and Special Presentations without specific classifications
+\definecolor{circol}{rgb}{1.00, 0.60, 0.80}   %{1.00, 0.64, 0.61}
+\definecolor{synlig}{rgb}{1.00, 0.80, 0.60}   %{1.00, 0.80, 0.00}   %{1.00, 0.75, 0.30}
+\definecolor{paralt}{rgb}{0.80, 1.00, 0.80}   %IPAC'14
+\definecolor{hadacc}{rgb}{0.80, 1.00, 1.00}   %{0.86, 0.93, 0.95}
+\definecolor{beadyn}{rgb}{0.98, 0.95, 0.02}   %{1.00, 1.00, 0.00}   %{1.00, 0.77, 0.00}
+\definecolor{beains}{rgb}{0.60, 0.80, 1.00}   %{0.62, 0.58, 0.58}
+\definecolor{acctec}{rgb}{0.80, 0.60, 1.00}   %{0.78, 0.39, 0.50}
+\definecolor{appacc}{rgb}{1.00, 1.00, 0.60}   %{1.00, 1.00, 0.35}
+\definecolor{opeclo}{rgb}{0.00, 0.80, 1.00}   %{0.20, 0.40, 1.00}   %{0.00, 0.71, 0.76}
+\definecolor{posses}{gray}{.75}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{color1}{gray}{.1}  %{1.0, 0.8, 1.0}
+\definecolor{color2}{gray}{.3}  %{1.0, 0.8, 0.8}
+\definecolor{color3}{gray}{.5}  %{1.0, 0.8, 0.6}
+\definecolor{color4}{gray}{.7}  %{1.0, 0.8, 0.4}
+\definecolor{color8}{gray}{.9}  %{1.0, 0.8, 0.4}
+\definecolor{color5}{gray}{.9}  %{1.0, 0.8, 0.1}
+\newcommand\DayColor{color3}
+
+%\newcommand\NewPage{}
+%\newcommand{\NewDay}[4]{\clearpage\ohead{#1}}
+\newcommand{\NewDay}[4]{\clearpage\chead{#4, #2 #1, 20#3}}
+
+\raggedbottom
+
+\newcommand{\Footnote}[1]{}
+
+\newcommand\Space{\quad}
+\newcommand\NEWPage{\newpage}
+
+\setkomafont{pagefoot}{\normalfont\rmfamily}
+\setkomafont{pagehead}{\Large\normalfont\rmfamily\bfseries}
+\ihead{}
+\ohead{}
+\chead{}
+\ofoot{}
+\ifoot{}
+\cfoot{}
+\rofoot{\pagemark}
+\lefoot{\pagemark}
+\cefoot{Dresden, Germany, June 15--20, 2014}
+\cofoot{IPAC 2014}
+
+\pagestyle{scrheadings}
+
+\newlength\sessionheadwidth
+\setlength\sessionheadwidth\textwidth
+\addtolength\sessionheadwidth{-2\fboxrule}
+\addtolength\sessionheadwidth{-2\fboxsep}
+
+\newcommand\ClassType{\fontsize{8}{8}\selectfont}
+
+%\addtolength\sessionheadwidth{-10pt}
+
+\newcommand\bold[1]{\textbf{#1}}
+\newcommand\bInst[1]{#1}
+
+\definecolor{sessionheader}{gray}{.75}
+%    \SessionHeader{posses}{31-Mar-11}{16:00}{17:30}{Oral}{Broadway Ballroom}
+%       1  color
+%       2  date
+%       3  start time
+%       4  end time
+%       5  presentation type
+%       6  Location
+%
+\newcommand\SessionHeader[6]{%
+             \fcolorbox{black}{#1}{\parbox{\sessionheadwidth}{#2\quad#3 -- #4\hfill#5\hfill#6\par}}\par\vspace*{-4pt}}
+
+
+\newlength\sessionbodywidth
+\setlength\sessionbodywidth\sessionheadwidth
+
+\newcommand\sessioncol{white}
+%     #   \SessionBody [5]
+%     # 1       {session-color}
+%     # 2       {session-abbr-string}
+%     # 3       {session-name-string}
+%     # 4       {session-classification-string}
+%     # 5       {session-chair-string}
+\newcommand\SessionBody[5]{%
+\fcolorbox{black}{#1}{\parbox{\sessionbodywidth}{%
+\centering\textbf{\textsf{#2} --- \textsf{#3}}\ifthenelse{\equal{#5}{}}{}{\par\textbf{Chair:} #5}}}\vspace*{-6pt}}
+
+\newcommand\Primary[2]{%
+                      }
+
+%---------------------------------------------------------------------------------------
+% Paper
+%        #     \Paper
+%        #     1    {paper_code}
+%        #     2    {main classification}
+%        #     3    {sub classification}
+%        #     4    {}
+%        #     5    {}
+%        #     6    {}
+%        #     7    {title}
+%        #     8    {authors + affiliation}
+%        #     9    {abstract}
+\newcommand\Paper[9]{%      \addcontentsline{toc}{subsection}{\protect\PapLine{#1}{#7}}%      Paper is for Posters
+%                        \item[#1] \hspace*{-1.5mm}\textbf{#7} -- \textit{#8} \vspace*{-7pt}
+                        \item[#1] \textbf{#7} -- \textit{#8}\par\vspace*{-7pt}%
+%>                        \begingroup\SetUpFS
+%>                            #9\par
+%>                        \endgroup
+}
+
+\newcommand\PaperWD[4]{%      Paper is for Posters which is withdrawn
+\item[\boxput*(0.25,-5.5){\begin{minipage}{\mywidthi}\textnormal{{\textit{contribu-\\[-1mm] tion with-\\[-1mm] drawn}}}\end{minipage}}%
+            {\sout{#1}}]  \textbf{#2} -- \textit{#3}\vspace*{-7pt}%
+%\item[#1]  {#2} -- \textit{#3}\vspace*{-6pt}%
+}
+%        {paper_code}
+%        {title}
+%        {authors + affiliation}
+%        {abstract} [==> not printed <==]
+%
+
+\newlength\TimWid
+% PaperAbs
+%        #     \Paper/\PaperAbs
+%        #     1    {paper_code}
+%        #     2    {main classification}
+%        #     3    {sub classification}
+%        #     4    {talk_btime}
+%        #     5    {talk_etime}
+%        #     6    {talk_duration}
+%        #     7    {title}
+%        #     8    {authors + affiliation}
+%        #     9    {abstract}
+%\newcommand\PaperAbs[9]{\addcontentsline{toc}{subsection}{\protect\PapLine{#1}{#7}}%    PaperAbs is for Orals
+%                       \item[{\setlength\fboxsep{2pt}\colorbox{posses}{\makebox[\mywidth-2\fboxsep]{\rmfamily#4}}}]\mbox{}%
+%                        \item[#1] \textbf{\hspace*{-1.5mm}\Large#7}  \newline
+%                        \textit{\Large#8}
+%                        \newline
+%                        \begingroup\fontsize{10}{11}\selectfont
+%                            #9\par
+%                        \endgroup
+%                        }
+\newcommand\PaperAbs[9]{%
+                         \item[\mbox{\parbox[t][0pt][t]{\mywidth}{#1\\%}}
+ %                               \begin{minipage}{\mywidth}#1\\\vspace*{10pt}%
+                                   {\settowidth\TimWid{\usekomafont{descriptionlabel}#1}%
+                                    \setlength\fboxsep{1pt}%
+                                    \raisebox{1.3mm}[0mm][0mm]{%
+                                                                \colorbox{posses}{\makebox[\TimWid-2\fboxsep][c]{\rmfamily#4}}
+                                                               }%
+                                     }}}%
+ %                               \end{minipage}
+                        ]\hbadness 100000
+                        \textbf{#7}  --
+                        \textit{#8}%
+                        }
+
+%
+% Classification Change
+%    \MainClass{#1 Paper Main Classification}
+%
+%\newcommand\MainClass[1]{\fcolorbox{black}{posses}{\parbox{\sessionbodywidth}{\textsf{#1}}}}
+%%> \newcommand\MainClass[1]{\item[\fcolorbox{black}{posses}{\textsf{#1}}]\mbox{}\vspace*{-4pt}}
+\newcommand\MainClass[1]{}
+%\renewcommand\MainClass[1]{\item[\setlength\fboxrule{0pt}\setlength\fboxsep{1.5pt}\fcolorbox{black}{color8}{\ClassType\textsf{#1}}]\mbox{}\vspace*{-8pt}}
+
+\setkomafont{descriptionlabel}{\upshape\mdseries\ttfamily}
+\newlength\mywidth
+\newlength\mywidthi
+\settowidth\mywidth{\usekomafont{descriptionlabel}MO6PFP0\,\,}
+\settowidth\mywidthi{\usekomafont{descriptionlabel}MO6PFP0\,\,~}
+\renewcommand*{\descriptionlabel}[1]{%
+  \hspace{\labelsep}\makebox[\mywidth][l]{\descfont #1}%
+}
+\newenvironment{PaperList}%
+{\begin{description}[leftmargin=\mywidthi,font=\usekomafont{descriptionlabel}]}%
+{\end{description}}
+
+%
+% better hyphenation of Acronyms separated by "/" like all institutes in Daresbury
+%
+\def\slash{/}
+\catcode`\/=\active
+\def/{\slash\discretionary{}{}{}}
+
+\begin{document}
+    %
+    % read script generated data
+    %
+    \newcommand\NP{\newpage}
+    \input{abstr-info-edit-v2}
+\end{document}

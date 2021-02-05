@@ -1,0 +1,31 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  circol 01:Circular Colliders
+%  synlig 02:Synchrotron Light Sources and FELs
+%  lincol 03:Linear Colliders, Lepton Accelerators and New Acceleration Techniques
+%  hadacc 04:Hadron Accelerators
+%  beadyn 05:Beam Dynamics and Electromagnetic Fields
+%  beains 06:Beam Instrumentation and Feedback
+%  acctec 07:Accelerator Technology
+%  appacc 08:Applications of Accelerators, Technology Transfer and Industrial Relations
+%  opeclo 09:Opening and Closing Sessions, Prize, Special Presentation
+%  posses 10:Poster Session
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  circol  1 Circular Colliders (1)
+%  synlig  2 Synchrotron Light Sources and FELs (2)
+%  lincol  3 Linear Colliders, Lepton Accelerators and New Acceleration Techniques (3)
+%  hadacc  4 Hadron Accelerators (4)
+%  beadyn  5 Beam Dynamics and Electromagnetic Fields (5)
+%  beains  6 Beam Instrumentation and Feedback (6)
+%  acctec  7 Accelerator Technology (7)
+%  appacc  8 Applications of Accelerators, Technology Transfer and Industrial Relations (8)
+%  opeclo  9 Opening, Closing and Special Presentations without specific classifications (9)
+\definecolor{circol}{rgb}{1.00, 0.60, 0.80}   %{1.00, 0.64, 0.61}
+\definecolor{synlig}{rgb}{1.00, 0.80, 0.60}   %{1.00, 0.80, 0.00}   %{1.00, 0.75, 0.30}
+\definecolor{lincol}{rgb}{0.80, 1.00, 0.80}   %{0.00, 1.00, 0.00}   %{0.75, 0.91, 0.56}
+\definecolor{hadacc}{rgb}{0.80, 1.00, 1.00}   %{0.80, 1.00, 0.80}   %{0.90, 0.94, 0.56}
+\definecolor{beadyn}{rgb}{0.98, 0.95, 0.02}   %{1.00, 1.00, 0.00}   %{1.00, 0.77, 0.00}
+\definecolor{beains}{rgb}{0.60, 0.80, 1.00}   %{0.62, 0.58, 0.58}
+\definecolor{acctec}{rgb}{0.80, 0.60, 1.00}   %{0.78, 0.39, 0.50}
+\definecolor{appacc}{rgb}{1.00, 1.00, 0.60}   %{1.00, 1.00, 0.35}
+\definecolor{opeclo}{rgb}{0.00, 0.80, 1.00}   %{0.20, 0.40, 1.00}   %{0.00, 0.71, 0.76}
+\definecolor{posses}{gray}{.75}

@@ -1,0 +1,57 @@
+\makeatletter
+\renewcommand\@pnumwidth{2.2em}
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                 {-\baselineskip}%
+                 {0.5\baselineskip}%
+                 {\normalfont\sffamily\Large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                   {-\baselineskip}%
+                   {0.35\baselineskip}%
+                   {\normalfont\sffamily\large\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                  {-\baselineskip}%
+                  {0.2\baselineskip}%
+                  {\normalfont\sffamily\normalsize\bfseries}}
+\renewcommand*\l@section[2]{%
+% \ifnum \c@tocdepth >\m@ne
+  \ifnum \c@tocdepth >\z@
+%   \addpenalty{-\@highpenalty}%
+    \addpenalty\@secpenalty
+%   \vskip 1.0em \@plus\p@
+    \addvspace{1.0em \@plus\p@}%
+    \setlength\@tempdima{1.5em}%   1.5
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+%      \penalty\@highpenalty
+    \endgroup
+  \fi}
+%
+\renewcommand\tableofcontents{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+%    \section*{\contentsname}%                     <-- was \chapter !
+    \section*{\contentsname
+        \@mkboth{%
+           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \@starttoc{toc}%
+    \if@restonecol\twocolumn\fi
+    }
+%
+\renewcommand{\rmdefault}{\sfdefault}
+%\newcommand\@pnumwidth{1.55em}
+%\renewcommand\@tocrmarg{2.55em}
+%\renewcommand\@tocrmarg{80pt}
+\renewcommand*\l@subsection{\@dottedtocline{2}{1.5em}{47pt}}
+%\newcommand*\l@subsubsection{\@dottedtocline{3}{3.8em}{3.2em}}
+\makeatother
+\usepackage{array}
+\usepackage{color}
+\definecolor{grau}{gray}{0.85}

@@ -1,0 +1,66 @@
+\documentclass[twoside]{article}
+
+\usepackage{array}
+\usepackage{booktabs}
+%\usepackage{graphicx}
+\usepackage[latin1]{inputenc}
+%\usepackage{longtable}
+\usepackage{multicol}
+\usepackage{txfonts}
+\usepackage{supertabular}
+\usepackage[papersize={595pt,792pt}, body={483pt, 680pt},
+            top=58pt, left=56pt, head=18pt, headsep=15pt]{geometry}
+\usepackage{pifont}
+\usepackage{hyperref}
+
+\let\Otemize =\itemize
+\let\Onumerate =\enumerate
+\let\Oescription =\description
+% Zero the vertical spacing parameters
+\def\Nospacing{\itemsep=0pt\topsep=0pt\partopsep=0pt\parskip=0pt\parsep=0pt}
+% Redefine the environments in terms of the original values
+\newenvironment{Itemize}{\Otemize\Nospacing}{\endlist}
+\newenvironment{Enumerate}{\Onumerate\Nospacing}{\endlist}
+\newenvironment{Description}{\Oescription\Nospacing}{\endlist}
+
+%\renewcommand{\rmdefault}{ptm}
+%\setcounter{page}{2}
+\raggedbottom
+
+\newcommand{\Tel}{\Pisymbol{dingbest}{83}}
+\newcommand{\FaX}{\Pisymbol{dingbest}{84}}
+
+\renewcommand{\topfraction}{.95}
+\renewcommand{\bottomfraction}{.95}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.8}
+\parindent 0em
+\leftmargini 2em
+\leftmargin\leftmargini
+\leftmarginv .5em
+\leftmarginvi .5em
+\setlength\tabcolsep{3pt}
+
+\makeatletter
+\@itempenalty -10000
+\makeatother
+\tolerance-10001
+
+\setlength\emergencystretch{2em}
+\setlength\extrarowheight{2pt}
+\pagestyle{empty}
+\thispagestyle{empty}
+\setcounter{page}{2}
+
+
+\begin{document}
+
+\section*{\sf\Large Participants List}
+
+ \begin{multicols*}{3}
+ \small
+%  \raggedcolumns
+    \input{Participants.tex}
+\end{multicols*}
+
+\end{document}

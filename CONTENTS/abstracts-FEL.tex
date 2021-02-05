@@ -1,0 +1,335 @@
+\documentclass[9pt,twoside,footsepline]{scrbook}
+
+\setlength\parindent{0pt}
+%             DIV  = 20
+%             BCOR = 11.38109pt
+%             \paperwidth      = 312.9803pt  313
+%              \textwidth      = 256.35934pt 256
+%              DIV departure   = 15%
+%              \evensidemargin = -42.11008pt
+%              \oddsidemargin  = -45.80894pt
+%             \paperheight     = 625.96062pt 625
+%              \textheight     = 534.59985pt 534
+%              \topmargin      = -71.08444pt
+%              \headheight     = 13.68748pt
+%              \headsep        = 16.42499pt
+%              \topskip        = 9.0pt
+%              \footskip       = 38.32498pt
+%              \baselineskip   = 10.95pt
+%              on input line 6.
+
+\usepackage{ifxetex}
+\usepackage{ifthen}
+\ifxetex\else
+   \usepackage[utf8]{inputenc}
+\fi
+\usepackage[tocindentauto,tocgraduated]{tocstyle}
+%\usepackage[tocindentmanual,tocfullflat]{tocstyle}
+\usepackage[T1]{fontenc}
+\usepackage{fourier,enumitem,color,ifthen}
+\usepackage{scrpage2}
+\usepackage{calc}
+\usepackage{eso-pic, graphicx}
+\usepackage[scaled=.95]{helvet}
+\usepackage[scaled=.88]{luximono}   %.92
+\usepackage[papersize={148mm,210mm}, twoside, bindingoffset=4mm, %, showframe
+            top=15mm, bottom=20mm, inner=10mm, outer=16mm]{geometry}
+\usepackage{tabularx}
+\usepackage{fontspec}
+\usepackage{hyperref}
+
+\hypersetup{pdfpagelayout=TwoPageRight,
+            pdfstartview=Fit,
+            pdfpagemode=UseNone,
+            linktocpage=false,
+            pdfborder={0 0 0},
+            colorlinks=false,
+            unicode=true}
+
+%\AddToShipoutPicture*{%
+%    \AtPageUpperLeft{\makebox(0,0)[lt]{\rotatebox{90}{%
+%                     \rule{130mm}{6mm}\framebox[30mm]{\Huge August 23}\rule{50mm}{6mm}}}}%
+%}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  circol 01:Circular Colliders:100,64,61
+%  synlig 02:Synchrotron Light Sources and FELs;100,75,30
+%  lincol 03:Linear Colliders, Lepton Accelerators and New Acceleration Techniques:75,91,56
+%  hadacc 04:Hadron Accelerators:90,94,56
+%  beadyn 05:Beam Dynamics and Electromagnetic Fields:100,77,0
+%  beains 06:Beam Instrumentation and Feedback:62,58,58
+%  acctec 07:Accelerator Technology:78,39,50
+%  appacc 08:Applications of Accelerators, Technology Transfer and Industrial Relations:100,100,35
+%  opeclo 09:Opening and Closing Sessions, Prize, Special Presentation:00,71,76
+%  posses 10:Poster Session:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  circol  1 Circular Colliders (1)
+%  synlig  2 Synchrotron Light Sources and FELs (2)
+%  lincol  3 Linear Colliders, Lepton Accelerators and New Acceleration Techniques (3)
+%  hadacc  4 Hadron Accelerators (4)
+%  beadyn  5 Beam Dynamics and Electromagnetic Fields
+%  beains  6 Beam Instrumentation and Feedback (6)
+%  acctec  7 Accelerator Technology (7)
+%  appacc  8 Applications of Accelerators, Technology Transfer and Industrial Relations (8)
+%  opeclo    Opening, Closing and Special Presentations without specific classifications
+\definecolor{circol}{rgb}{1.00, 0.60, 0.80}   %{1.00, 0.64, 0.61}
+\definecolor{synlig}{rgb}{1.00, 0.80, 0.60}   %{1.00, 0.80, 0.00}   %{1.00, 0.75, 0.30}
+\definecolor{lincol}{rgb}{0.80, 1.00, 0.80}   %{0.00, 1.00, 0.00}   %{0.75, 0.91, 0.56}
+\definecolor{hadacc}{rgb}{0.80, 1.00, 1.00}   %{0.80, 1.00, 0.80}   %{0.90, 0.94, 0.56}
+\definecolor{beadyn}{rgb}{0.98, 0.95, 0.02}   %{1.00, 1.00, 0.00}   %{1.00, 0.77, 0.00}
+\definecolor{beains}{rgb}{0.60, 0.80, 1.00}   %{0.62, 0.58, 0.58}
+\definecolor{acctec}{rgb}{0.80, 0.60, 1.00}   %{0.78, 0.39, 0.50}
+\definecolor{appacc}{rgb}{1.00, 1.00, 0.60}   %{1.00, 1.00, 0.35}
+\definecolor{opeclo}{rgb}{0.00, 0.80, 1.00}   %{0.20, 0.40, 1.00}   %{0.00, 0.71, 0.76}
+\definecolor{posses}{gray}{.90}
+
+\hyphenation{Qua-dru-poles Mik-hai-li-chen-ko Ka-na-rey-kin}
+
+\tolerance=2000
+\setlength{\emergencystretch}{6pt}
+
+\newcommand\high[1]{\textsuperscript{#1}}
+\newcommand\low[1]{\textsubscript{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\hypertarget[1]{}
+\renewcommand\hyperlink[2]{#2}
+\newcommand\Aday{Contents}
+\newcommand{\NewDay}[3]{\clearpage%
+                        \setlength\RFirst{\RFirst+30mm}%
+                        \setlength\RSecond{\RSecond-30mm}%
+                        \renewcommand\Aday{August #1}}
+
+\newcommand{\NewPart}[1]{\clearpage%
+                        \renewcommand\Aday{#1}}
+
+\newcommand\Vdate{01-Aot-1900}
+\newcommand\Vstarttim{00}
+\newcommand\Vendtim{00}
+\newcommand\Vprestyp{OP}
+\newcommand\Vlocation{---}
+
+\newfontfamily\SessionTTCC{FrutigerLTStd-Bold}      %8.5pt/11.5pt  (Time/Title/Chair/Code)
+\newfontfamily\TTCC{FrutigerLTStd-Bold}
+\newfontfamily\ChairAff{FrutigerLTStd-Light}        %8.5pt/11.5pt%
+\newfontfamily\Footer{FrutigerLTStd-Light}          %5.0pt InitialCaps
+
+\newfontfamily\AbstractTitle{GaramondMTStd-Bold}    %10pt/11.5pt
+\newfontfamily\AbstractAuth{GaramondMTStd-Italic}   %10pt/11.5pt
+\newfontfamily\AbstractText{GaramondMTStd-Regular}  %8.5pt/10.5pt
+
+\definecolor{grau}{gray}{.90}
+
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{2mm}{18mm}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{2mm}{18mm}}
+\makeatother
+
+\setkomafont{pagefoot}{\fontsize{7.0}{8.5}\Footer\selectfont}
+\setkomafont{pagehead}{\fontsize{7.0}{8.5}\Footer\selectfont}
+%\addtokomafont{pagenumber}{\Footer}
+\setkomafont{pagenumber}{\Footer}
+\usetocstyle{standard}
+\settocfeature{pagenumberhook}{\fontsize{7.0}{8.5}\Footer\selectfont}
+
+\newdimen\RFirst
+\newdimen\RSecond
+\setlength\RFirst{20mm}
+\setlength\RSecond{160mm}
+
+\chead{Abstract}
+
+\lehead{\AddToShipoutPicture*{\fontsize{16.0}{16.0}\TTCC\selectfont%
+            \AtPageUpperLeft{\makebox(0,0)[lt]{%
+                             \rotatebox{90}{\rule{\RSecond}{6mm}%
+                             \rotatebox{180}{\raisebox{-4mm}{\makebox[30mm]{\Aday}}}
+                             \rule{\RFirst}{6mm}%
+                             }}}%
+        }
+       }
+\rohead{\AddToShipoutPicture*{\fontsize{16.0}{16.0}\TTCC\selectfont%
+            \AtPageUpperLeft{\kern\myloc{\makebox(0,0)[lt]{%
+                             \rotatebox{-90}{\rule{\RFirst}{6mm}%
+                             \rotatebox{180}{\raisebox{-4mm}{\makebox[30mm]{\Aday}}}
+                             \rule{\RSecond}{6mm}%
+                             }}}}
+                              }
+       }
+
+%\ofoot{}
+%\ifoot{}
+%\cfoot{}
+
+\rofoot{\pagemark}
+\lefoot{\pagemark}
+\cfoot{\scshape 32\textsuperscript{\tiny ND} International Free Electron Laser Conference, Malm\"{o}, Sweden, August 23--27, 2010}
+
+
+\setlength\fboxrule{0pt}
+\setlength\fboxsep{2mm}
+
+\newlength\sessionheadwidth
+\setlength\sessionheadwidth{118mm}
+
+  \newlength\myloc
+  \addtolength{\myloc}{\paperwidth}
+  \addtolength{\myloc}{-6mm}
+
+
+\newlength\IndxAlphBoxWidth
+\setlength\IndxAlphBoxWidth{114mm}
+\newlength\IndxNameBoxWidth
+\setlength\IndxNameBoxWidth{105pt}
+\newlength\IndxCodeBoxWidth
+\setlength\IndxCodeBoxWidth{130pt}
+
+\newcommand\TxtAuthor{\fontsize{8.5}{11.5}\ChairAff\selectfont}
+\newcommand\TxtItalic{\fontsize{8.5}{11.5}\ChairAff\itshape\selectfont}
+\newcommand\TxtBold{\fontsize{8.5}{11.5}\SessionTTCC\selectfont}
+\newcommand\TxtType{\fontsize{8.5}{11.5}\ChairAff\selectfont}
+
+\newcommand\tocpage{\addtocontents{toc}{\protect\newpage\vspace*{-2\baselineskip}}}
+
+\newcommand\bold[1]{#1}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+%
+% header nix \SessionHeader{posses}{27-Aug-2010}{08:30}{10:00}{Oral presentation}{Svansjön}
+%
+%     #   \SessionHeader [6]
+%     #        {session-color}
+%     #        {date}
+%     #        {start-time}
+%     #        {end-time}
+%     #        {presentation-type}
+%     #        {location-string}
+\newcommand\SessionHeader[6]{%
+            \renewcommand\Vdate{#2}
+            \renewcommand\Vstarttim{#3}
+            \renewcommand\Vendtim{#4}
+            \renewcommand\Vprestyp{#5}
+            \renewcommand\Vlocation{#6}}
+%
+% body alles \SessionBody{posses}{MOOA}{Opening, New Lasing, FEL Lecture}   {}
+%
+\newlength\sessionbodywidth
+\setlength\sessionbodywidth\sessionheadwidth
+
+\newcommand\sessioncol{white}
+% SessionBody: #1 Session-color #2 Session-name-string -- Session-classification #3 Chair
+% -> empty <-- \newcommand\SessionBody[3]{}
+%     #   \SessionBody [5]
+%     #        {session-color}
+%     #        {session-abbr-string}
+%     #        {session-name-string}
+%     #        {session-classification-string}
+%     #        {session-chair-string}
+
+\newcommand\SessionBody[5]{%
+            \addtocontents{toc}{\protect\SecLine{#2}{#3}}
+             \fcolorbox{black}{#1}{\parbox{114mm}{\vspace*{-0.6mm}% \sessionheadwidth}{%
+                \setlength\tabcolsep{0pt}%
+                \begin{minipage}{20mm}%
+                   \begin{tabular}{@{}c@{}}
+                      \SessionTTCC \Vstarttim \\
+                      \SessionTTCC |  \\
+                      \SessionTTCC \Vendtim \\
+                   \end{tabular}%
+                \end{minipage}\hspace*{-2mm}%
+                \begin{minipage}{98mm}%
+                   \begin{tabular}{@{}L{96mm}@{}}
+                      \ifthenelse{\equal{#5}{}}{%
+                            \\
+                            \SessionTTCC #3 \\
+                            \\
+                         }{%
+                            \SessionTTCC #3 \\
+                            {\SessionTTCC Chair:} \ChairAff #5\\
+                            \\
+                         }
+                   \end{tabular}%
+                \end{minipage}\vspace*{-1.4mm}\newline}}\vspace*{-.3mm}}
+
+\newcommand\Paper[4]{\addcontentsline{toc}{subsection}{\protect\PapLine{#1}{#2}}%
+                     \setlength\fboxrule{.4pt}\setlength\fboxsep{0pt}%      Paper is for Posters
+                     \item[#1]\hspace*{-1.75mm}%
+                     \bgroup\fontsize{10.0}{11.5}\AbstractTitle\selectfont%
+                        #2
+                     \egroup
+                     \newline%
+                     \bgroup\fontsize{10.0}{11.5}\AbstractAuth\selectfont%
+                        #3
+                     \egroup
+                     \newline%
+                     \bgroup\fontsize{8.5}{10.5}\AbstractText\selectfont%
+                        #4\par
+                     \egroup\vspace*{0pt}
+                    }
+
+\newcommand\PaperAbs[4]{\addcontentsline{toc}{subsection}{\protect\PapLine{#1}{#2}}%
+                     \setlength\fboxrule{.4pt}\setlength\fboxsep{0pt}%      Paper is for Posters
+                     \item[#1]\hspace*{-1.75mm}%
+                     \bgroup\fontsize{10.0}{11.5}\AbstractTitle\selectfont%
+                        #2
+                     \egroup
+                     \newline%
+                     \bgroup\fontsize{10.0}{11.5}\AbstractAuth\selectfont%
+                        #3
+                     \egroup
+                     \newline%
+                     \bgroup\fontsize{8.5}{10.5}\AbstractText\selectfont%
+                        #4\par
+                     \egroup\vspace*{0pt}
+                    }
+
+\setkomafont{descriptionlabel}{\SessionTTCC}
+\newlength\mywidth
+\setlength\mywidth{18mm}
+\renewcommand*{\descriptionlabel}[1]{%
+  \hspace{\labelsep}\makebox[\mywidth][l]{\descfont#1}%
+}
+\newenvironment{PaperList}%
+{\begin{description}[leftmargin=\mywidth,font=\usekomafont{descriptionlabel}]}%
+{\end{description}}
+
+
+
+\newcommand\SecLine[2]{\vspace*{3mm}\fcolorbox{black}{posses}{\parbox{114mm}{\makebox[\mywidth][l]{\descfont#1}{\descfont#2}}}\vspace*{-4.5mm}}
+\newcommand\PapLine[2]{\makebox[\mywidth][l]{\descfont#1}{\AbstractText#2}}
+
+%
+% better hyphenation of Acronyms separated by "/" like all institutes in Daresbury
+%
+\def\slash{/}
+\catcode`\/=\active
+\def/{\slash\discretionary{}{}{}}
+
+\renewcommand{\chaptermark}{}
+\chead{Contents}
+
+\pagestyle{scrheadings}
+\thispagestyle{scrheadings}
+
+
+\begin{document}
+
+\NewPart{Contents}
+    \renewcommand*{\contentsname}{}
+    \renewcommand*{\chapterheadstartvskip}{\vspace*{-3.7\baselineskip}}
+    \tableofcontents
+    \clearpage
+    %
+    % read script generated data
+    %
+\chead{Abstract}
+    \input{abstr-info}
+    \clearpage
+
+\chead{List of Authors}
+\NewPart{Authors}
+
+    {\TxtItalic Italic} papercodes indicate primary authors
+
+    \input{authbookletidx}
+\end{document}

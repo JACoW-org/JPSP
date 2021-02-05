@@ -1,0 +1,25 @@
+%
+% Color and Session Definition for North-American IPACs
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  n-cirlin  01: Circular and Linear Colliders
+%  n-synfel  02: Synchrotron Light Sources and FELs
+%  n-srcalt  03: Particle Sources and Alt. Accel. Techniques
+%  n-hadron  04: Hadron Accelerators
+%  n-dynami  05: Beam Dynamics & Electromagnetic Fields
+%  n-instru  06: Instrumentation
+%  n-techno  07: Accelerator Technology
+%  n-applic  08: Applications of Accelerators
+%  n-opclsp  09: Opening, Closing, Special Sessions
+%  n-posses  10: Poster Sessions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{n-cirlin}{rgb}{1.000, 0.600, 0.800}
+\definecolor{n-synfel}{rgb}{0.988, 0.835, 0.706}
+\definecolor{n-srcalt}{rgb}{0.847, 0.894, 0.737}
+\definecolor{n-hadron}{rgb}{0.773, 0.851, 0.945}
+\definecolor{n-dynami}{rgb}{1.000, 1.000, 0.000}
+\definecolor{n-instru}{rgb}{0.565, 0.706, 0.886}
+\definecolor{n-techno}{rgb}{0.200, 0.400, 0.663}
+\definecolor{n-applic}{rgb}{0.565, 0.706, 0.886}
+\definecolor{n-opclsp}{rgb}{0.200, 0.400, 1.000}
+\definecolor{n-posses}{gray}{.75}

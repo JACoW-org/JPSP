@@ -1,0 +1,42 @@
+\renewcommand{\rmdefault}{ptm}
+%
+% make sure that all versions of pdftex can process more than 512 inclusions
+%
+\let\normalpdfximage\pdfximage\def\pdfximage{\immediate\normalpdfximage}
+
+\def\headrulewidth{0pt}
+\setcounter{tocdepth}{3}
+%\twocolumn
+\columnseprule 0pt      %    Width of rule between columns.
+
+\makeatletter
+\def\subsection{\@startsection{subsection}{2}{\z@}{2.6ex plus .8ex minus
+   .17ex}{1.2ex plus .17ex}{\large\it}}
+\def\section{\secdef\@sectionb\@sections}
+\def\@sectionb[#1]#2{\@sections{#2}}
+\def\@sections#1{\@startsection {section}{1}{\z@}
+                {2.8ex plus 0.8ex minus .1ex}{1.5ex plus .2ex}
+                {\large\bf\boldmath\centering}{\uppercase{#1}}}
+\def\abstract{\subsection*{Abstract}}
+\def\endabstract{\par}
+\def\maketitle{\par
+ \begingroup
+   \twocolumn[\@maketitle]
+ \endgroup
+ \let\maketitle\relax
+ \let\@maketitle\relax
+ \gdef\@author{}\gdef\@title{}}
+
+\newlength{\titleblockheight}       % so user can change it if need be
+\setlength{\titleblockheight}{50mm}
+
+\def\@maketitle{\vbox to \titleblockheight {\hsize\textwidth
+  \linewidth\hsize \vskip 3pt \centering
+  {\Large\bf \@title \par}
+  \vskip 2em                % Vertical space after title.
+  {\large\begin{tabular}[t]{@{}c@{}}\@author \end{tabular}\par}
+  \vfil}}
+\makeatother
+
+\newcommand\high[1]{\ensuremath{^{#1}}}
+\newcommand\low[1]{\ensuremath{_{#1}}}

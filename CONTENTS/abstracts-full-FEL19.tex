@@ -1,0 +1,488 @@
+% !TeX encoding = utf8
+% !TeX program = pdflatex
+
+%\documentclass[9pt,pagesize,headexclude,footexclude,halfparskip-]{scrbook}
+%\documentclass[10pt,twoside]{scrartcl}
+\documentclass[10pt,twoside,bookmarkpackage=false]{scrbook}	% was 11pt
+
+\setlength\parindent{0pt}
+
+\usepackage[ngerman, english]{babel}
+\useshorthands{"}
+\addto\extrasenglish{\languageshorthands{ngerman}}
+\selectlanguage{english}
+
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[upright]{fourier}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage{calc}
+%\usepackage{scrlayer-scrpage}
+\usepackage{scrpage2}
+\usepackage{eso-pic, graphicx}
+\usepackage[scaled=1.0]{helvet}
+\usepackage[scaled=.92]{beramono}   %.92
+
+\usepackage[papersize={210mm, 297mm}, %
+%            layoutsize={138mm, 212mm},
+%            layoutoffset={4.875mm, 5.125mm},
+%            body={133mm, 212mm},
+            inner=7mm, outer=5mm,
+            bindingoffset=13mm,
+            headheight=0mm, headsep=0mm,
+            %foot=13mm,
+            footskip=5mm,
+%>            showframe,
+%            showcrop,
+            includeall,
+            marginparsep=0mm,
+            marginparwidth=10mm,
+            top=11mm, bottom=11mm,
+%            top=3mm, bottom=4mm,
+            % inner=8mm, outer=10mm
+            ]{geometry}
+
+
+\usepackage{hyperref}
+\hypersetup{pdfpagelayout=OneColumn,
+            pdfstartview=Fit,
+            pdfpagemode=UseNone,
+            linktocpage=false,
+            pdfborder={0 0 0},
+            colorlinks=false,
+            unicode=true}
+
+%\renewcommand\contentsname{}
+\renewcommand*{\contentsname}{Contents of Abstracts}
+
+\usepackage[normalem]{ulem}
+\usepackage{fancybox}
+\usepackage{multicol}
+
+\hyphenation{Qua-dru-poles Qua-dru-pole Mik-hai-li-chen-ko Ka-na-rey-kin Tka-chen-ko Fak-to-ro-vich Du-brov-skiy Most-haf Iva-ni-sen-ko Neu-bauer Ja-mil-kow-ski Teru-nu-ma Po-pie-lar-ski Tera-shi-ma Ya-ra-my-shev Ko-zhu-ha-rov Win-kel-mann Ratzin-ger Smir-nov Floett-mann Buerk-mann-Gehr-lein Pal-mie-ri Ko-she-lev Chou-han Ga-vri-lov Cle-men-te Kraw-czyk Ko-ba-ya-shi So-be-nin Buerk-mann-Gehr-lein Yoshi-ka-wa Pas-qui-nel-li Yoko-ya-ma Mar-chet-to Ya-kov-lev Tiu-nov Gu-sa-ro-va Tan-ta-wi Mat-veen-ko Sche-los-ke De-mon-stra-tor Ko-no-nen-ko Emittance-ex-change Tolle-strup Naka-moto Stei-chert Sa-ka-be Cha-kra-var-thy Ka-me-shi-ma Zvya-gint-sev Ali-mov Mar-ty-nov para-met-ers Pa-nic-cia
+Leo-nova Vorozht-sov Gru-chal-la Ka-ne-ki Iso-chro-nous Oli-viei-ra Miya-mo-to Kreutz-kamp Dziu-ba Gett-mann
+Ya-ma-na-ka Por-qued-du Tei-chert Ell-iott Ser-gats-kov Pi-schal-ni-kov}
+
+\tolerance=2000
+\setlength{\emergencystretch}{6pt}
+
+\newcommand\high[1]{\textsuperscript{#1}}
+\newcommand\low[1]{\textsubscript{#1}}
+\newcommand\Space{\newline}
+%\newcommand\high[1]{\ensuremath{\mathrm{$^#1$}}}
+%\newcommand\low[1]{\ensuremath{\mathrm{$_#1$}}}
+%%%\newcommand\high[1]{\ensuremath{^#1}}
+\newcommand\NewPage{\newpage}
+\newcommand\NP{\newpage}
+
+\newcommand\PapLine[2]{\makebox[\mywidth][l]{\descfont#1}{#2}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Color and Session Definition for North-American IPACs
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  n-cirlin  01: Circular and Linear Colliders
+%  n-synfel  02: Synchrotron Light Sources and FELs
+%  n-srcalt  03: Particle Sources and Alt. Accel. Techniques
+%  n-hadron  04: Hadron Accelerators
+%  n-dynami  05: Beam Dynamics & Electromagnetic Fields
+%  n-instru  06: Instrumentation
+%  n-techno  07: Accelerator Technology
+%  n-applic  08: Applications of Accelerators
+%  n-opclsp  09: Opening, Closing, Special Sessions
+%  n-posses  10: Poster Sessions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{n-fac-i}{rgb} {0.980, 0.749, 0.565} %{1.000, 0.600, 0.800}
+\definecolor{n-keynt}{rgb} {0.000, 0.690, 0.941} %{0.988, 0.835, 0.706}
+\definecolor{n-funar}{rgb} {0.722, 0.800, 0.894} %{0.847, 0.894, 0.737}
+\definecolor{n-srf-t}{rgb} {0.800, 0.753, 0.855} %{0.773, 0.851, 0.945}
+\definecolor{n-hot-t}{rgb} {0.855, 0.588, 0.580} %{1.000, 1.000, 0.000}
+\definecolor{n-cavit}{rgb} {0.769, 0.843, 0.608} %{0.565, 0.706, 0.886}
+%\definecolor{n-techno}{rgb}{0.757, 0.718, 0.804} %{0.200, 0.400, 0.663}
+%\definecolor{n-applic}{rgb}{0.608, 0.831, 0.702} %{0.565, 0.706, 0.886}
+%\definecolor{n-opclsp}{rgb}{0.200, 0.400, 1.000}
+\definecolor{posses}{gray}{.75}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\NewDay}[5]{\clearpage\ohead{#1}}
+%\newcommand{\NewDay}[5]{\clearpage\ohead{#4 #2 #1, 20#3}}   % removed comma after weekday
+\newcommand\OP{}
+\newcommand\Aday{Contents}
+%---------------------------------------------------------------------------------------
+% NewDay
+%     #
+%     # 1       {day}
+%     # 2       {month}
+%     # 3       {year [yy]}
+%     # 4       {day of week}
+%
+\newdimen\RFirst
+\newdimen\RSecond
+\setlength\RFirst{-29mm}
+\setlength\RSecond{297mm}
+
+
+\newcommand{\NewDay}[5]{\clearpage%\ohead{#4 #2 #1, 20#3}%
+                        \setlength\RFirst{\RFirst+28mm}%
+                        \setlength\RSecond{\RSecond-28mm}%
+                        %\renewcommand\OP{\textbf{#5}}%
+                        \renewcommand\Aday{#1\,#5\,--\,#4}}
+
+%\newcommand{\NewPart}[1]{\clearpage%
+%                        \renewcommand\Aday{#1}}
+
+\newcommand\Vdate{01-Aot-1900}
+\newcommand\Vstarttim{00}
+\newcommand\Vendtim{00}
+\newcommand\Vprestyp{OP}
+\newcommand\Vlocation{---}
+
+\newcommand\NEWPage{\newpage}
+
+\raggedbottom
+
+\definecolor{color1}{gray}{.1}  %{1.0, 0.8, 1.0}
+\definecolor{color2}{gray}{.3}  %{1.0, 0.8, 0.8}
+\definecolor{color3}{gray}{.5}  %{1.0, 0.8, 0.6}
+\definecolor{color4}{gray}{.7}  %{1.0, 0.8, 0.4}
+\definecolor{color8}{gray}{.9}  %{1.0, 0.8, 0.4}
+\definecolor{color5}{gray}{.9}  %{1.0, 0.8, 0.1}
+\newcommand\DayColor{color3}
+
+\newcommand\muup{\textmu}
+
+%%\lehead{\AddToShipoutPicture*{\fontsize{16.0}{16.0}\selectfont%
+%%            \AtPageUpperLeft{\kern\mlloc{\makebox(0,0)[lt]{%
+%%                             \rotatebox{90}{\textcolor{\DayColor}{\rule{\RSecond}{18mm}}%
+%%                             \rotatebox{180}{\raisebox{-3.6mm}{\makebox[40mm]{\Aday}}}
+%%                             \textcolor{\DayColor}{\rule{\RFirst}{18mm}}%
+%%                             }}}}%
+%%        }%
+%%       }
+%%
+%%\rohead{\AddToShipoutPicture*{\fontsize{16.0}{16.0}\selectfont%
+%%            \AtPageUpperLeft{\kern\myloc{\makebox(0,0)[lt]{%
+%%                             \rotatebox{-90}{\textcolor{\DayColor}{\rule{\RFirst}{18mm}}%
+%%                             \rotatebox{180}{\raisebox{-3.6mm}{\makebox[40mm]{\Aday}}}%
+%%                             \textcolor{\DayColor}{\rule{\RSecond}{18mm}}%
+%%                             }}}}%
+%%                              }%
+%%       }
+
+\setkomafont{pagefoot}{\SetUpFS\rmfamily}
+\setkomafont{pagehead}{\Large\normalfont\rmfamily\bfseries}
+\ihead{}
+\ohead{}
+\chead{}
+\ofoot{}
+\ifoot{}
+\cfoot{}
+
+\ofoot{\pagemark}
+%\lefoot{\pagemark}
+\cfoot{}
+
+\pagestyle{scrheadings}
+
+\newlength\sessionheadwidth
+\setlength\sessionheadwidth\textwidth
+\addtolength\sessionheadwidth{-2\fboxrule}
+\addtolength\sessionheadwidth{-2\fboxsep}
+
+%\addtolength\sessionheadwidth{-10pt}
+
+\newcommand\bold[1]{\textbf{#1}}
+\newcommand\bInst[1]{#1}
+\newcommand\SetUpFS{\fontsize{10}{11.5}\selectfont}
+\newcommand\TxtAuthor{\fontsize{10}{11.5}\selectfont}
+\newcommand\TxtItalic{\fontsize{10}{11.5}\itshape\selectfont}
+\newcommand\TxtBold{\fontsize{10}{11.5}\selectfont}
+\newcommand\TxtType{\fontsize{10}{11.5}\selectfont}
+\newcommand\ClassType{\fontsize{10}{10}\selectfont}
+\newcommand\TxtNormal{\fontsize{10}{11.5}\ttfamily\mdseries\selectfont}
+
+\newcommand\Footnote[1]{}
+
+\newcommand\TalkDur{\fontsize{6.25}{6.25}\ttfamily\selectfont}
+
+\definecolor{grau}{gray}{.90}
+%\renewcommand\hypertarget[1]{}
+%\renewcommand\hyperlink[2]{#2}
+
+\definecolor{sessionheader}{gray}{.75}
+%    \SessionHeader{posses}{31-Mar-11}{16:00}{17:30}{Oral}{Broadway Ballroom}
+%       1  color
+%       2  date
+%       3  start time
+%       4  end time
+%       5  presentation type
+%       6  Location
+%
+\newcommand\SessionHeader[6]{%
+            \renewcommand\Vdate{#2}
+            \renewcommand\Vstarttim{#3}
+            \renewcommand\Vendtim{#4}
+            \renewcommand\Vprestyp{#5}
+            \renewcommand\Vlocation{#6}%
+            \newpage
+%             \fcolorbox{black}{#1}{\parbox{\sessionheadwidth}{#2\quad#3 -- #4\hfill#5\hfill#6\par}}\par\vspace*{-4pt}}
+             \fcolorbox{black}{#1}{\parbox{\sessionheadwidth}{#2\quad#3 -- #4\hfill#6\par}}\par\vspace*{-4pt}}
+
+\newcommand\SessionHeaderNoP[6]{%
+            \renewcommand\Vdate{#2}
+            \renewcommand\Vstarttim{#3}
+            \renewcommand\Vendtim{#4}
+            \renewcommand\Vprestyp{#5}
+            \renewcommand\Vlocation{#6}%
+            %\newpage
+%             \fcolorbox{black}{#1}{\parbox{\sessionheadwidth}{#2\quad#3 -- #4\hfill#5\hfill#6\par}}\par\vspace*{-4pt}}
+             \fcolorbox{black}{#1}{\parbox{\sessionheadwidth}{#2\quad#3 -- #4\hfill#6\par}}\par\vspace*{-4pt}}
+
+
+\newlength\sessionbodywidth
+\setlength\sessionbodywidth\sessionheadwidth
+
+\newcommand\sessioncol{white}
+%     #   \SessionBody [5]
+%     # 1       {session-color}
+%     # 2       {session-abbr-string}
+%     # 3       {session-name-string}
+%     # 4       {session-classification-string}
+%     # 5       {session-chair-string}
+\newcommand\SessionBody[5]{%
+            \fcolorbox{black}{#1}{\parbox{\sessionbodywidth}{%
+            \centering\textbf{\textsf{#2} --- \textsf{#3}}%
+            \addcontentsline{toc}{section}{\textsf{#2} --- \textsf{#3}}%
+            \ifthenelse{\equal{#5}{}}{}{\par\textbf{Chair:} #5}}}\vspace*{-6pt}}
+
+%---------------------------------------------------------------------------------------
+% Paper
+%        #     \Paper
+%        #     1    {paper_code}
+%        #     2    {main classification}
+%        #     3    {sub classification}
+%        #     4    {}
+%        #     5    {}
+%        #     6    {}
+%        #     7    {title}
+%        #     8    {authors + affiliation}
+%        #     9    {abstract}
+\newcommand\Paper[9]{\hypertarget{lab:#1}{}
+%                        \item[#1] \hspace*{-1.5mm}\textbf{#7} -- \textit{#8} \vspace*{-7pt}
+                        \item[#1] \textbf{#7}
+                        \newline
+                        \textit{#8}
+                        \newline
+                        \begingroup\TxtType
+                            #9\par
+                        \endgroup%
+                        \vspace*{-5pt}
+}
+
+\newcommand\PaperWD[4]{%      Paper is for Posters which is withdrawn
+\item[\boxput*(0.25,-5.5){\begin{minipage}{\mywidthi}\textnormal{{\textit{contribu-\\[-1mm] tion with-\\[-1mm] drawn}}}\end{minipage}}%
+            {\sout{#1}}]  \textbf{#2} -- \textit{#3}\vspace*{-7pt}%
+%\item[#1]  {#2} -- \textit{#3}\vspace*{-6pt}%
+}
+%        {paper_code}
+%        {title}
+%        {authors + affiliation}
+%        {abstract} [==> not printed <==]
+%
+
+\newlength\TimWid
+% PaperAbs
+%        #     \Paper/\PaperAbs
+%        #     1    {paper_code}
+%        #     2    {main classification}
+%        #     3    {sub classification}
+%        #     4    {talk_btime}
+%        #     5    {talk_etime}
+%        #     6    {talk_duration}
+%        #     7    {title}
+%        #     8    {authors + affiliation}
+%        #     9    {abstract}
+%\newcommand\PaperAbs[9]{\addcontentsline{toc}{subsection}{\protect\PapLine{#1}{#7}}%    PaperAbs is for Orals
+%                       \item[{\setlength\fboxsep{2pt}\colorbox{posses}{\makebox[\mywidth-2\fboxsep]{\rmfamily#4}}}]\mbox{}%
+%                        \item[#1] \textbf{\hspace*{-1.5mm}\Large#7}  \newline
+%                        \textit{\Large#8}
+%                        \newline
+%                        \TxtType
+%                            #9\par
+%                        \endgroup
+%                        }
+\newcommand\PaperAbs[9]{\addcontentsline{toc}{subsection}{{\descfont#1} #7}%    PaperAbs is for Oral
+                        %\subsection*{{\descfont#1} #7}
+                         \hypertarget{lab:#1}{}%
+                         \item[\mbox{\parbox[t][0pt][t]{\mywidth}{#1\\%}}
+ %                               \begin{minipage}{\mywidth}#1\\\vspace*{10pt}%
+                                   {\settowidth\TimWid{\usekomafont{descriptionlabel}#1}%
+                                    \setlength\fboxsep{1pt}%
+                                    \raisebox{1.0mm}[0mm][0mm]{%
+                                                                \colorbox{posses}{\makebox[\TimWid-2\fboxsep][c]{\rmfamily#4 \rotatebox{90}{\TalkDur#6}}}
+                                                               }%
+                                     }}}%
+ %                               \end{minipage}
+                        ]\hbadness 100000
+                        \textbf{#7} \newline
+                        \textit{#8}%
+                        \newline
+                        \begingroup\TxtType
+                            #9\par
+                        \endgroup%
+                         \vspace*{-5pt}
+                        }
+
+%%   \BreakHeaderCont{posses}{13-Sep-10}{12:30}{13:40}{20}{Lunch Break}{}
+%     #   \BreakHeaderCont [6]
+%     #    2   {date}                  13-Sep-10
+%     #    3   {start-time}            12:30
+%     #    4   {end-time}              13:40
+%     #    5   {talk_duration}         duration
+%     #    6   {presentation-type}     Break or Coffee/Tea/Lunch
+%     #    7   {location-string}       Restaurant ��L/what is on offer
+%
+%\newcommand\BreakHeaderCont[6]{\parbox{\sessionbodywidth}{\LARGE\textbf{\textsf{\textit{#3\,--\,#4}}}~~#5}\vspace*{4pt}}
+%\newcommand\BreakHeaderCont[6]{\parbox{\sessionbodywidth}{\LARGE\textbf{\textsf{%
+%                                       \textit{\ifthenelse{\equal{#4}{}}{#3\hphantom{\,--\,#3}}{#3\,--\,#4}}}}~~#5}\vspace*{4pt}}
+
+\newcommand\BreakHeaderCont[7]{\item[\mbox{\parbox[t][0pt][t]{\mywidth}{#6\\%}}
+ %                               \begin{minipage}{\mywidth}#1\\\vspace*{10pt}%
+                                   {\settowidth\TimWid{\usekomafont{descriptionlabel}#1}%
+                                    \setlength\fboxsep{1pt}%
+                                    \raisebox{1.0mm}[0mm][0mm]{%
+                                                                \colorbox{posses}{\makebox[\TimWid-2\fboxsep][c]{\rmfamily#3 \rotatebox{90}{\TalkDur#5}}}
+                                                               }%
+                                     }}}%
+ %                               \end{minipage}
+                        ]\hbadness 100000
+                        \textbf{#7} %\newline
+                          \vspace*{2pt}
+                        }
+
+
+\newcommand\Primary[2]{}
+%
+% Classification Change
+%    \MainClass{#1 Paper Main Classification}
+%
+%\newcommand\MainClass[1]{\fcolorbox{black}{posses}{\parbox{\sessionbodywidth}{\textsf{#1}}}}
+%\newcommand\MainClass[1]{\item[\fcolorbox{black}{n-posses}{\textsf{#1}}]\mbox{}\vspace*{-8pt}}
+%\renewcommand\MainClass[1]{\item[\fcolorbox{black}{n-posses}{\textsf{#1}}]\mbox{}\vspace*{-8pt}}
+\newcommand\MainClass[1]{}
+%\renewcommand\MainClass[1]{\item[\setlength\fboxrule{0pt}\setlength\fboxsep{1.5pt}\fcolorbox{black}{color8}{\ClassType\textsf{#1}}]\mbox{}\vspace*{-8pt}}
+\renewcommand\OP{}
+
+
+\setkomafont{descriptionlabel}{\upshape\mdseries\ttfamily}
+\newlength\mywidth
+\newlength\mywidthi
+\settowidth\mywidth{\usekomafont{descriptionlabel}TUPD2M}
+\settowidth\mywidthi{\usekomafont{descriptionlabel}TUPD2M~}
+\renewcommand*{\descriptionlabel}[1]{%
+  \hspace{\labelsep}\makebox[\mywidth][l]{\descfont #1}%
+}
+\newenvironment{PaperList}%
+{\begin{description}[leftmargin=\mywidthi,font=\usekomafont{descriptionlabel}]}%
+{\end{description}}
+
+
+% 516 1217
+%
+% better hyphenation of Acronyms separated by "/" like all institutes in Daresbury
+%
+\def\slash{/}
+\catcode`\/=\active
+\def/{\slash\discretionary{}{}{}}
+
+\begin{document}
+\setlength\RFirst{6mm}
+\setlength\RSecond{262mm}
+
+\newlength\mlloc
+\addtolength{\mlloc}{-8.0mm}
+\newlength\myloc
+\addtolength{\myloc}{\paperwidth}
+\addtolength{\myloc}{-10.5mm}
+
+\lehead{\AddToShipoutPicture*{\fontsize{15.0}{15.0}\selectfont%
+            \AtPageUpperLeft{\kern\mlloc{\makebox(0,0)[lt]{%
+                             \rotatebox{90}{\textcolor{\DayColor}{\rule{\RSecond}{18mm}}%
+                             \rotatebox{180}{\raisebox{-4.0mm}{\makebox[35mm]{\Aday}}}
+                             \textcolor{\DayColor}{\rule{\RFirst}{18mm}}%
+                             }}}}%
+        }%
+       }
+
+\rohead{\AddToShipoutPicture*{\fontsize{15.0}{15.0}\selectfont%
+            \AtPageUpperLeft{\kern\myloc{\makebox(0,0)[lt]{%
+                             \rotatebox{-90}{\textcolor{\DayColor}{\rule{\RFirst}{18mm}}%
+                             \rotatebox{180}{\raisebox{-4.5mm}{\makebox[35mm]{\Aday}}}%
+                             \textcolor{\DayColor}{\rule{\RSecond}{18mm}}%
+                             }}}}%
+                              }%
+       }
+
+
+
+\setcounter{page}{35}
+%   \setlength\RFirst{\RFirst+5mm}%
+	\renewcommand\Aday{Table of Abstracts}
+
+%\renewcommand\contentsname{}
+\renewcommand*{\contentsname}{Table of Abstracts}
+
+    \tableofcontents
+    %\cleardoublepage
+
+    %
+    %
+    % read script generated data
+    %f\renewcommand\Aday{Authors}
+    \input{abstr-info}
+
+     %\cleardoublepage
+     \clearpage
+\setlength\RFirst{\RFirst+25mm}%
+\setlength\RSecond{\RSecond-25mm}%
+\renewcommand\Aday{Authors}
+%\iffalse
+\lehead{\AddToShipoutPicture*{\fontsize{15.0}{15.0}\selectfont%
+            \AtPageUpperLeft{\kern\mlloc{\makebox(0,0)[lt]{%
+                             \rotatebox{90}{\textcolor{\DayColor}{\rule{\RSecond}{18mm}}%
+                             \rotatebox{180}{\raisebox{-3.6mm}{\makebox[35mm]{\Aday}}}
+                             \textcolor{\DayColor}{\rule{\RFirst}{18mm}}%
+                             }}}}%
+        }%
+       }
+
+%\fi
+\rohead{\AddToShipoutPicture*{\fontsize{15.0}{15.0}\selectfont%
+            \AtPageUpperLeft{\kern\myloc{\makebox(0,0)[lt]{%
+                             \rotatebox{-90}{\textcolor{\DayColor}{\rule{\RFirst}{18mm}}%
+                             \rotatebox{180}{\raisebox{-4.5mm}{\makebox[35mm]{\Aday}}}%
+                             \textcolor{\DayColor}{\rule{\RSecond}{18mm}}%
+                             }}}}%
+                              }%
+       }
+%\fi
+     \addcontentsline{toc}{section}{\fontsize{10}{11.5}{\textsf{Author List}}}%
+     \renewcommand\TxtItalic{\fontsize{10}{11.5}\ttfamily\bfseries\selectfont}
+
+     \smallskip
+%     \rohead{Author List}
+%     \lehead{Author List}
+     {\ttfamily\TxtItalic Boldface} papercodes indicate primary authors
+
+\begin{flushleft}
+ \begin{multicols*}{2}
+         \input{authtexidx}
+%         \input{authtexidx}
+ \end{multicols*}
+\end{flushleft}
+
+\end{document}

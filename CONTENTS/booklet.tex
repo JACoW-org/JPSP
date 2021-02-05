@@ -1,0 +1,107 @@
+\documentclass[9pt,pagesize,headexclude,footexclude,halfparskip-]{scrbook}
+\setlength\paperwidth{5in}
+\setlength\paperheight{9in}
+\typearea[4mm]{18}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fourier,enumitem,color,ifthen,scrpage2}
+\usepackage[scaled=.95]{helvet}
+\usepackage[scaled=.92]{luximono}
+
+\hyphenation{Qua-dru-poles Mik-hai-li-chen-ko Ka-na-rey-kin}
+
+\tolerance=2000
+\setlength{\emergencystretch}{6pt}
+
+\newcommand\high[1]{\textsuperscript{#1}}
+\newcommand\low[1]{\textsubscript{#1}}
+%\newcommand\high[1]{\ensuremath{\mathrm{$^#1$}}}
+%\newcommand\low[1]{\ensuremath{\mathrm{$_#1$}}}
+%%%\newcommand\high[1]{\ensuremath{^#1}}
+
+\newcommand{\NewDay}[1]{\clearpage\ohead{#1}}
+
+\setkomafont{pagefoot}{\normalfont\rmfamily}
+\setkomafont{pagehead}{\Large\normalfont\rmfamily\bfseries}
+\ihead{}
+\ohead{}
+\chead{}
+\ofoot{}
+\ifoot{}
+\cfoot{}
+\rofoot{\pagemark}
+\lefoot{\pagemark}
+\cefoot{Vancouver BC, May 4--8}
+\cofoot{2009 Particle Accelerator Conference}
+
+\pagestyle{scrheadings}
+
+\newlength\sessionheadwidth
+\setlength\sessionheadwidth\textwidth
+\addtolength\sessionheadwidth{-2\fboxrule}
+\addtolength\sessionheadwidth{-2\fboxsep}
+%\addtolength\sessionheadwidth{-10pt}
+\definecolor{sessionheader}{gray}{.75}
+% SessionHeader: #1 date/time, #2 Location
+\newcommand\SessionHeader[2]{%
+\fcolorbox{sessionheader}{sessionheader}{\parbox{\sessionheadwidth}{\centering#1\par\ifthenelse{\equal{#2}{}}{}{#2\par}}}\par}
+
+\newlength\sessionbodywidth
+\setlength\sessionbodywidth\sessionheadwidth
+\newcommand\sessioncol{white}
+% SessionBody: #1 Session-color #2 Session-name-string -- Session-classification #3 Chair
+\newcommand\SessionBody[3]{%
+\fcolorbox{black}{#1}{\parbox{\sessionbodywidth}{%
+\centering\textbf{\textsf{#2}}\ifthenelse{\equal{#3}{}}{}{\par#3}}}}
+%        {session-color}
+%        {session-name-string}
+%        {session-classification-string}
+%        {session-chair-string}
+
+\newcommand\Paper[4]{%      Paper is for Posters
+\item[#1]  \textbf{#2} -- \textit{#3}%
+}
+%        {paper_code}
+%        {title}
+%        {authors + affiliation}
+%        {abstract} [==> not printed <==]
+%
+\newcommand\PaperAbs[4]{%    PaperAbs is for Orals
+\item[#1] \textbf{#2} -- \textit{#3}%\\
+%\newline
+%\begin{small}\fontsize{7}{8}\selectfont
+%#4\par
+%\end{small}
+}
+%        {paper_code}
+%        {title}
+%        {authors + affiliation}
+%        {abstract}  [==> printed <==]
+% 
+
+\setkomafont{descriptionlabel}{\upshape\mdseries\ttfamily}
+\newlength\mywidth
+\newlength\mywidthi
+\settowidth\mywidth{\usekomafont{descriptionlabel}MO6PFP088}
+\settowidth\mywidthi{\usekomafont{descriptionlabel}MO6PFP088~}
+\renewcommand*{\descriptionlabel}[1]{%
+  \hspace{\labelsep}\makebox[\mywidth][l]{\descfont #1}%
+}
+\newenvironment{PaperList}%
+{\begin{description}[leftmargin=\mywidthi,font=\usekomafont{descriptionlabel}]}%
+{\end{description}}
+
+%
+% better hyphenation of Acronyms separated by "/" like all institutes in Daresbury
+%
+\def\slash{/}
+\catcode`\/=\active
+\def/{\slash\discretionary{}{}{}}
+
+
+\begin{document}
+    %
+    % read script generated data
+    %
+    \input{abstr-info}
+\end{document}

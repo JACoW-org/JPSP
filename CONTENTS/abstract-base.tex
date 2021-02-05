@@ -1,0 +1,487 @@
+\enableregime[latin1]
+
+% \enablemode[letter]
+
+\enablemode[program]
+
+\def\uline{\underbar}
+\def\Space{ }
+\let\ensuremath\mathematics
+\def\betaup{\beta}
+\def\degree{\textdegree}
+
+% layout
+
+\dontcomplain
+
+% \showframe
+
+\doifmodeelse {letter} {
+
+    \definepapersize % letter
+      [PaperFormat]
+      [width=8.5in,
+       height=10.5in]
+
+} {
+
+    \definepapersize % A4
+      [PaperFormat]
+      [width=210mm,
+       height=280mm]
+
+}
+
+\setuppapersize
+  [PaperFormat]
+  [PaperFormat]
+
+\setuplayout
+  [location=middle,
+   marking=off,
+   width=middle,
+   height=middle,
+   header=1cm,
+   footer=1cm,
+   margindistance=.5cm,
+   margin=1cm,
+   backspace=1.5cm,
+   topspace=1.0cm,
+   bottomspace=1.0cm]
+
+\setuppagenumbering
+  [alternative=doublesided,
+   location=]
+
+\definelayer
+  [page]
+
+\setupbackgrounds
+  [page]
+  [background=page]
+
+\setupheader
+  [text]
+  [width=.7\textwidth]
+
+\setuptolerance
+  [verytolerant,stretch]
+
+\setupitemize
+  [leftmargin=1em,
+   rightmargin=1em]
+
+% fonts
+
+\setupbodyfont
+  [palatino,10pt]
+
+\setuplayout
+  [style=bold]
+
+% color
+
+\definecolor[AuthorColor]     [s=.8]
+\definecolor[MinTitleColor]   [s=.6]
+\definecolor[MaxTitleColor]   [s=.8]
+\definecolor[MainAuthorColor] [s=.1]
+
+% structure
+
+% \startsetups document:define
+%
+%    \let \SessionTitle \empty
+%    \let \SessionDate  \empty
+%    \let \SessionChair \empty
+%
+%    \let \Papercode    \empty
+%    \let \Title        \empty
+%    \let \Authors      \empty
+%    \let \Funding      \empty
+%    \let \Abstract     \empty
+%    \let \Footnote     \empty
+%
+%    \long \def \StartSessionTitle##1\StopSessionTitle {\def\SessionTitle{##1}}
+%    \long \def \StartSessionDate ##1\StopSessionDate  {\def\SessionDate {##1}}
+%    \long \def \StartSessionChair##1\StopSessionChair {\def\SessionChair{##1}}
+%    \long \def \StartPapercode   ##1\StopPapercode    {\def\Papercode   {##1}}
+%    \long \def \StartTitle       ##1\StopTitle        {\def\Title       {##1}}
+%    \long \def \StartAuthors     ##1\StopAuthors      {\def\Authors     {##1}}
+%    \long \def \StartFunding     ##1\StopFunding      {\def\Funding     {##1}}
+%    \long \def \StartAbstract    ##1\StopAbstract     {\def\Abstract    {##1}}
+%    \long \def \StartFootnote    ##1\StopFootnote     {\def\Footnote    {##1}}
+%
+% \stopsetups
+
+\unexpanded\def\DefinePickupData#1%
+  {\letvalue{PUD:#1}\empty
+   \normalexpanded
+     {\def\expandafter\noexpand\csname Start#1\endcsname##1\expandafter\noexpand\csname Stop#1\endcsname
+        {\noexpand\setvalue{PUD:#1}{##1}}}}
+
+\def\PickedupData#1% expanded
+  {\getvalue{PUD:#1}}
+
+\startsetups document:define
+
+  % with the proper structure we can split this one
+
+  \DefinePickupData{SessionTitle}
+  \DefinePickupData{SessionDate}
+  \DefinePickupData{SessionChair}
+
+  \DefinePickupData{Papercode}
+  \DefinePickupData{Title}
+  \DefinePickupData{Authors}
+  \DefinePickupData{Funding}
+  \DefinePickupData{Abstract}
+  \DefinePickupData{Footnote}
+
+\stopsetups
+
+% sessions
+
+\def\StartSession     {\setups[document:session:start]}
+\def\StopSession      {\setups[document:session:stop]}
+
+\def\StartSessionData {\setups[document:sessiondata:start]}
+\def\StopSessionData  {\setups[document:sessiondata:stop]}
+
+\startsetups document:session:start
+
+  \page \bgroup
+
+  \setups[document:define]
+
+\stopsetups
+
+\startsetups document:session:stop
+
+  \page \egroup
+
+\stopsetups
+
+\startsetups document:sessiondata:start
+    % nothing
+\stopsetups
+
+\startsetups document:sessiondata:stop
+
+  \expanded{\chapter{\PickedupData{SessionTitle}}}
+
+  \setupheadertexts
+    [\bfb\PickedupData{SessionTitle}]  % or [{\getmarking[title]}]
+    [\bfb\PickedupData{SessionDate}]
+
+  \setupfootertexts
+    [\bfb\PickedupData{SessionChair}]
+    [\bfb\pagenumber]
+
+\stopsetups
+
+\setuphead
+  [chapter]
+  [style=\bfd,
+   number=no,
+   after=\blank,
+   before=\blank,
+   page=yes]
+
+\definestructureprefixset
+  [section]
+  [section-3]
+  []
+
+\setuphead
+  [section]
+  [sectionset=section,
+   numbersegments=section]
+
+% entries
+
+\def\StartEntries {\setups[document:entries:start]}
+\def\StopEntries  {\setups[document:entries:stop]}
+
+\def\StartEntry   {\setups[document:entry:start]}
+\def\StopEntry    {\setups[document:entry:stop]}
+
+\startsetups document:entries:start
+    % nothing
+\stopsetups
+
+\startsetups document:entries:stop
+    % nothing
+\stopsetups
+
+% not used
+
+\defineframedtext [authors]
+
+\setupframedtexts
+  [authors]
+  [frame=off,
+   width=.6\textwidth,
+   align=normal,
+   background=AuthorOverlay,
+ % backgroundcolor=AuthorColor,
+   offset=.5\lineheight] % or offset=none
+
+\startuniqueMPgraphic{AuthorOverlay}
+    linear_shade(OverlayBox,1,\MPcolor{MinTitleColor},\MPcolor{MaxTitleColor}) ;
+\stopuniqueMPgraphic
+
+\defineoverlay
+  [AuthorOverlay]
+  [\uniqueMPgraphic{AuthorOverlay}]
+
+\startsetups document:entry:start
+
+  \bgroup
+
+\stopsetups
+
+\definefont
+  [SBbla]
+  [SerifBold sa 1.6]
+
+\setuphead
+  [section]
+  [ownnumber=yes,
+   prefix=no, % we can now have prefixed with own numbers
+   alternative=command,
+   textstyle=\bf,
+   numberstyle=\SBbla,
+   distance=0pt,
+   after=\blank,
+   before=\blank,
+   numbercommand=\MyNumberCommand,
+   textcommand=\MyTitleCommand]
+
+\definelayer
+  [NumberLayer]
+
+\setuplayer
+  [NumberLayer]
+  [width=\textwidth]
+
+\unexpanded\def\MyNumberCommand#1%
+  {\setlayer
+     [NumberLayer]
+     {\signalrightpage}%
+   \doifrightpageelse
+     {\setlayerframed
+        [NumberLayer]
+        [corner={right,top},
+         location={right,bottom},
+         hoffset=-\margindistance,
+         rotation=90]
+        [frame=off,
+         background=NumberOverlayR,
+         width=35mm,
+         align={middle,lohi}, % or left,lohi
+         height=\marginwidth]
+        {\hbox{#1}}}                 % and #1\hskip2.5mm\strut
+     {\setlayerframed
+        [NumberLayer]
+        [corner={left,top},
+         location={left,bottom},
+         hoffset=-\margindistance,
+         rotation=90]
+        [frame=off,
+         background=NumberOverlayL,
+         width=35mm,
+         align={middle,lohi}, % or left,lohi
+         height=\marginwidth]
+        {\hbox{#1}}}}                % and #1\hskip2.5mm\strut
+
+\unexpanded\def\MyTitleCommand#1%
+  {\framed
+     [frame=off,
+      width=\textwidth,
+      align=right,
+      background={SectionOverlay,NumberLayer}]{#1}}
+
+\unexpanded\def\MySubjectCommand#1%
+  {\framed
+     [frame=off,
+      width=\textwidth,
+      align=flushleft,
+      background={SectionOverlay}]{#1}}
+
+\setuphead
+  [subject]
+  [ownnumber=no,
+   numbercommand=,
+   textcommand=\MySubjectCommand]
+
+\startuniqueMPgraphic{SectionOverlay}
+    numeric delta ; delta := 1/0.6 ;
+    linear_shade(OverlayBox,1,\MPcolor{MinTitleColor},delta[\MPcolor{MinTitleColor},\MPcolor{MaxTitleColor}]) ;
+\stopuniqueMPgraphic
+
+\startuniqueMPgraphic{NumberOverlayL}
+    numeric delta ; delta := 1/0.6 ;
+    path p ; p := OverlayBox topenlarged 2.5mm ;
+    linear_shade(p,1,\MPcolor{MinTitleColor},delta[\MPcolor{MinTitleColor},\MPcolor{MaxTitleColor}]) ;
+    setbounds currentpicture to OverlayBox ;
+\stopuniqueMPgraphic
+
+\startuniqueMPgraphic{NumberOverlayR}
+    numeric delta ; delta := 1/0.6 ;
+    path p ; p := OverlayBox bottomenlarged 2.5mm ;
+    linear_shade(p,1,\MPcolor{MinTitleColor},delta[\MPcolor{MinTitleColor},\MPcolor{MaxTitleColor}]) ;
+    setbounds currentpicture to OverlayBox ;
+\stopuniqueMPgraphic
+
+\defineoverlay[SectionOverlay][\uniqueMPgraphic{SectionOverlay}]
+\defineoverlay[NumberOverlayL][\uniqueMPgraphic{NumberOverlayL}]
+\defineoverlay[NumberOverlayR][\uniqueMPgraphic{NumberOverlayR}]
+
+\startsetups document:entry:stop
+
+    % make sure that we start on a new page when needed
+
+    \setbox\scratchbox\hbox{\startauthors\PickedupData{Authors}\stopauthors}
+
+    \getnoflines{\ht\scratchbox} \advance\noflines by 4 \testpage[\noflines]
+
+    % now proceed
+
+    \let\normalbarcommand| \let|\relax
+    \expanded{\section{\PickedupData{Papercode}}{\PickedupData{Title}}}
+    \let|\normalbarcommand
+
+    \placefigure[outer,none,halfline]
+        {}
+        {\startauthors\PickedupData{Authors}\stopauthors}
+
+    \PickedupData{Abstract} \par
+    \PickedupData{Footnote} \par
+
+    \doifsomething {\PickedupData{Funding}} {\bf Funding: }\PickedupData{Funding}
+
+  \egroup
+
+\stopsetups
+
+\setupfloats
+ %[margin=5mm]
+  [margin=\strutheight]
+
+% extras
+
+\useMPlibrary[dum]
+
+% the rest
+
+\setupexternalfigures
+  [directory=./additionals]
+
+\setupcolumns
+  [n=2,
+   tolerance=verytolerant]
+
+\starttext
+
+\title{Contents}
+
+\setupheadertexts
+  []
+  [\bfb Contents]
+
+\setuplist
+  [chapter]
+  [alternative=command,
+   command=\MyChapterCommand]
+
+\setuplist
+  [section]
+  [aligntitle=yes]
+
+\unexpanded\def\MyChapterCommand#1#2#3%
+  {\testpage[5]
+   % \subject{#2} % after update
+   \blank\MySubjectCommand{#2}\blank
+   \placelist[section][width=25mm]}
+
+\setupfootertexts
+  [Contents]
+  [\bfb\pagenumber]
+
+\placelist[chapter]
+
+\setupheadertexts
+  []
+  [\bfb Program]
+
+\doifmode {program} {
+
+    \chapter{Program}
+
+     \starttabulate[|lw(20mm)B|p|]
+       \readfile
+        {ctxt-shortprg.tex}
+        {\writestatus{DOCUMENT}{processing \readfilename}}
+        {\writestatus{DOCUMENT}{missing    \readfilename}}
+     \stoptabulate
+
+    \setupheadertexts
+      []
+      []
+
+    % \placecontent
+
+    \page
+
+}
+
+%\getfiguredimensions[outing.pdf]
+%
+%\dorecurse\noffigurepages
+%  {\scale
+%     [width=\textwidth]
+%     {\clip
+%        [hoffset=3.1cm,width=15cm,
+%         voffset=3.5cm,height=21cm]
+%        {\expanded{\externalfigure[outing.pdf][page=\recurselevel]}}}}
+
+\readfile
+  {ctxt-info.tex}
+  {\writestatus{DOCUMENT}{processing \readfilename}}
+  {\writestatus{DOCUMENT}{missing    \readfilename}}
+
+% no tag abuse -)
+
+\chapter{Author Index}
+
+\setupheadertexts
+  []
+%  [\bfb\PickedupData{SessionTitle}]
+  [\bfb Author Index]
+
+\setupfootertexts
+  [\tfx{\tt\it Italic } papercodes indicate primary author]
+  [\bfb\pagenumber]
+
+\startcolumnset
+  \readfile
+    {authcontextidx.tex}
+    {\writestatus{DOCUMENT}{processing \readfilename}}
+    {\writestatus{DOCUMENT}{missing    \readfilename}}
+\stopcolumnset
+
+% sponsors
+
+%\page[right]
+
+%\setupheadertexts
+%  []
+%  [\bfb Sponsors]
+
+\setupfootertexts
+  []
+  [\bfb\pagenumber]
+
+\stopsetups
+
+\stoptext

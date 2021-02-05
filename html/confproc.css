@@ -1,0 +1,902 @@
+/*
+ Version 4.0  06 Nov 2020  vrws
+*/
+
+body {
+    background-color: #ffffff;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    word-spacing: 0;
+    line-height: 1;
+    font-family: Calibri, Arial, times;
+}
+
+
+/*
+following definitions are used for tables 
+*/
+
+.comment {
+    font-style: italic;
+}
+
+.paptitle {
+    background-color: #80c1ff;
+    font-weight: bold;
+}
+
+.paptitle_key {
+    background-color: #80c1ff;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/*
+ no Atrributes for Links ()
+*/
+
+a:link {
+    /* unvisited link */
+    /*      color:                     #0000ff; */
+    text-decoration: none;
+}
+
+a:visited {
+    /* visited link */
+    color: #0000ff;
+    text-decoration: none;
+}
+
+a:hover {
+    /* mouse over link */
+    /*      color:                     #0000ff;   */
+    text-decoration: none;
+}
+
+a:active {
+    /* selected link */
+    color: #0000ff;
+    text-decoration: none;
+}
+
+
+/*
+  contributing Author 
+*/
+
+.author_cl {
+    color: rgb(51, 51, 255);
+}
+
+
+/*
+  marked Author is Presenter
+*/
+
+.presenter {
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+.presentertxt {
+    position: absolute;
+    left: -10px;
+    bottom: 18px;
+    white-space: nowrap;
+    color: #fff;
+    /* !important */
+    background-color: #f44336;
+    /* !important */
+    font-size: 12px;
+    /* !important */
+    display: inline-block;
+    padding: 2px 8px 2px 8px;
+    text-align: center;
+}
+
+.tooltip {
+    position: relative
+}
+
+.tooltip .pr-text {
+    display: none
+}
+
+.tooltip:hover .pr-text {
+    display: inline-block
+}
+
+
+/*
+  selected Author in Authors List
+*/
+
+.author_se {
+    color: rgb(255, 0, 0);
+}
+
+
+/*
+  Classification List (main classification)
+*/
+
+.w {
+    font-weight: bold;
+    font-size: 120%;
+    letter-spacing: -1.25px;
+    color: #000000;
+}
+
+
+/*
+  Classification List main entry (without sub entry)
+*/
+
+.class-wb {
+    font-weight: normal;
+    white-space: normal;
+    font-size: 120%;
+    letter-spacing: -1.25px;
+    color: blue;
+}
+
+.class-wb:hover {
+    font-size: 120%;
+    letter-spacing: -1.25px;
+    color: #ffffff;
+    background-color: #3399ff;
+}
+
+.cls-ul {
+    margin-top: 0;
+    background-color: #ffffff;
+}
+
+.class-b {
+    color: blue;
+    text-decoration: none;
+    letter-spacing: -1px;
+    text-align: left;
+}
+
+.class-b:hover {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #3399ff;
+}
+
+
+/* 
+ used for list-items
+*/
+
+.class-item {
+    list-style-type: square;
+    color: #000000;
+    background-color: #80c1ff;
+    text-align: left;
+}
+
+.class-bw {
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: -1px;
+    text-align: right;
+}
+
+
+/*
+  Superscript/Subscript (Font size) part in comments for debugging wrong sub/superscripts
+*/
+
+sub.std,
+sup.std {
+    font-size: 80%;
+    /* 200%;
+     color:                      rgb(255, 0, 0);  */
+}
+
+sub,
+sup {
+    font-size: 80%;
+    /* 200%; 
+     color:                      rgb(255, 0, 0);  */
+}
+
+
+/*
+  Superscript/Subscript debugging
+
+.debug {
+    font-size: 200%;
+    color: rgb(255, 0, 0);
+}
+
+.title {
+    background-color: #ccffff;
+}
+*/
+
+.session-table {
+    text-align: center;
+    background-color: #eeeeff;
+    border-collapse: separate;
+    border-spacing: 4px;
+    /*   cellspacing:               4;   */
+    /*   width:                     100%; */
+}
+
+.session-row {
+    text-align: center;
+    font-size: 120%;
+    letter-spacing: -1.5px;
+    /*    font-family:               'PTSansNarrowRegular'; */
+}
+
+.session-entry {
+    /*     text-decoration:            none;  */
+    text-align: center;
+    padding: 6px;
+    background-color: #c0e0ff;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    margin: -3px;
+    -moz-box-shadow: 2px 2px 4px #000000;
+    -webkit-box-shadow: 2px 2px 4px #000000;
+    box-shadow: 2px 2px 4px #000000;
+    behavior: url(PIE.htc);
+}
+
+.session-entry:hover {
+    text-decoration: none;
+    text-align: center;
+    background-color: #80c1ff;
+}
+
+.session-link {
+    text-decoration: none;
+}
+
+.session-link:hover {
+    color: #ffffff;
+}
+
+.session-link:focus {
+    background-color: yellow;
+    color: red;
+}
+
+.session-entry:focus {
+    text-decoration: none;
+    text-align: center;
+    background-color: yellow;
+    color: red;
+}
+
+.session-name {
+    text-decoration: none;
+    /*    white-space:                nowrap; */
+    /*     font-size:                 110%;  */
+    background-color: #ffffff;
+    font-size: 1em;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 10px 2px 0;
+    text-align: left;
+    -moz-box-shadow: 2px 2px 4px #000000;
+    -webkit-box-shadow: 2px 2px 4px #000000;
+    box-shadow: 2px 2px 4px #000000;
+    behavior: url(PIE.htc);
+}
+
+.list-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+    white-space: nowrap;
+    background-color: #eeeeff;
+    /*     line    */
+}
+
+.list-item {
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+    white-space: nowrap;
+    color: #000000;
+}
+
+
+/* a.list-item:hover {
+     color:                     #000000;
+} */
+
+.paper {
+    margin: 10px;
+    /* 2px 0px; */
+}
+
+.paptitle {
+    background-color: #80c1ff;
+    font-weight: bold;
+    font-size: 1em;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 5px 10px 5px;
+    display: block;
+    /*    egal */
+    text-align: left;
+    column-fill: balance;
+    -moz-box-shadow: 2px 2px 4px #000000;
+    -webkit-box-shadow: 2px 2px 4px #000000;
+    box-shadow: 2px 2px 4px #000000;
+    behavior: url(PIE.htc);
+}
+
+.papkey {
+    background-color: #c0e0ff;
+    font-size: 1em;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 10px 2px 0;
+    text-align: left;
+    -moz-box-shadow: 2px 2px 4px #000000;
+    -webkit-box-shadow: 2px 2px 4px #000000;
+    box-shadow: 2px 2px 4px #000000;
+    behavior: url(PIE.htc);
+    white-space: nowrap;
+}
+
+.papkey:hover {
+    color: #ffffff;
+    background-color: #3399FF;
+}
+
+.papkey-hov:hover {
+    color: #ffffff;
+    background-color: #3399FF;
+}
+
+.papkeystr {
+    background-color: #c0e0ff;
+    /*     background-color:           #eeeeff; */
+    font-size: 1em;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 10px 2px 0;
+    text-align: left;
+    text-decoration: line-through;
+    -moz-box-shadow: 2px 2px 4px #000000;
+    -webkit-box-shadow: 2px 2px 4px #000000;
+    box-shadow: 2px 2px 4px #000000;
+    behavior: url(PIE.htc);
+}
+
+.papkeyword {
+    background-color: #c0e0ff;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 10px 2px 0;
+    text-align: left;
+    -moz-box-shadow: 2px 2px 4px #000000;
+    -webkit-box-shadow: 2px 2px 4px #000000;
+    box-shadow: 2px 2px 4px #000000;
+    behavior: url(PIE.htc);
+}
+
+.papkeyword:hover {
+    /*     color:                      #ffffff; */
+    background-color: #3399FF;
+    /*     background-color:           #c0e0ff;   */
+}
+
+.papkeyword-hov:hover {
+    color: #ffffff;
+    background-color: #3399FF;
+    /*     background-color:           #c0e0ff;   */
+}
+
+.pappage {
+    background-color: #eeeeff;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 10px 2px 0;
+    text-align: right;
+    -moz-box-shadow: 2px 2px 4px #000000;
+    -webkit-box-shadow: 2px 2px 4px #000000;
+    box-shadow: 2px 2px 4px #000000;
+    behavior: url(PIE.htc);
+}
+
+.jtext {
+    text-align: justify;
+}
+
+.abstract {
+    background: #eeeeff;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    padding: 8px;
+    margin: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-align: justify;
+    /*    line-height:            110%;  */
+    display: block;
+    behavior: url(PIE.htc);
+}
+
+.sessionheader {
+    background: #eeeeff;
+    -moz-box-shadow: 4px 4px 20px #000000;
+    -webkit-box-shadow: 4px 4px 20px #000000;
+    box-shadow: 4px 4px 20px #000000;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 12px;
+    display: block;
+    behavior: url(PIE.htc);
+    text-align: left;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.sessdoiheader {
+    background: #eeffff;
+    -moz-box-shadow: 4px 4px 20px #000000;
+    -webkit-box-shadow: 4px 4px 20px #000000;
+    box-shadow: 4px 4px 20px #000000;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 12px;
+    display: block;
+    behavior: url(PIE.htc);
+    float: right;
+    font-weight: bold;
+    font-size: 80%;
+}
+
+.sessionchair {
+    color: blue;
+}
+
+.highlight_topic {
+    color: blue;
+}
+
+.keyw-item {
+    width: 400px;
+    height: 60px;
+    color: blue;
+    letter-spacing: -.5px;
+    font-size: 110%;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.keyw-item:hover {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    /*   text-transform:          uppercase; */
+    background-color: #3399FF;
+}
+
+.mainmenu-logo
+/* Conference Logo */
+
+{
+    width: 30%;
+    text-align: left;
+    vertical-align: middle;
+    text-decoration: none;
+    padding: -25px;
+}
+
+.mainmenu-name
+/* Conference Name and Location */
+
+{
+    width: 40%;
+    text-align: center;
+    vertical-align: middle;
+    color: black;
+    text-decoration: none;
+    letter-spacing: -.5px;
+    font-size: 175%;
+    font-weight: bold;
+}
+
+.mainmenu-idx
+/* table entry for Link List (Session, Classification, Author, Keyword, Institute) */
+
+{
+    width: 30%;
+    text-align: right;
+    vertical-align: middle;
+    /*    line-height:             90%;   */
+    color: black;
+}
+
+.mainmenu-item
+/* Link item (Session, Classification, Author, Keyword, Institute) */
+
+{
+    color: blue;
+    text-decoration: none;
+    letter-spacing: -1.5px;
+    font-size: 125%;
+    /*    font-weight:             bold; */
+    white-space: nowrap;
+}
+
+.mainmenu-item:hover {
+    color: #ffffff;
+    background-color: #3399FF;
+}
+
+.auth-item {
+    width: 300px;
+    height: 60px;
+    color: blue;
+    letter-spacing: -.5px;
+    font-size: 110%;
+    text-decoration: none;
+    /*   white-space:             nowrap; */
+}
+
+.auth-item:hover {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    /*   text-transform:          uppercase; */
+    background-color: #3399FF;
+}
+
+.inst-item {
+    color: blue;
+    text-decoration: none;
+    letter-spacing: -.5px;
+    font-size: 110%;
+    /*  white-space:             nowrap; */
+}
+
+.inst-item:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #3399FF;
+}
+
+.authinst {
+    font-size: 1.25em;
+    text-align: left;
+}
+
+
+/* .pc {
+    background:             #eeeeff;
+    -moz-border-radius:      8px;
+    -webkit-border-radius:   8px;
+    border-radius:           8px;
+    padding:                 8px;
+    margin:                  0px;
+    behavior:                url(PIE.htc);
+   }
+*/
+
+.papercodehead {
+    background: #eeeeff;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 12px;
+    font-size: 1.25em;
+    text-align: center;
+    behavior: url(PIE.htc);
+}
+
+.papertitlehead {
+    background: #eeeeff;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 12px;
+    font-size: 1.25em;
+    text-align: center;
+    behavior: url(PIE.htc);
+}
+
+.paperotherkeyw {
+    background: #eeeeff;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 12px;
+    font-size: 1.25em;
+    text-align: left;
+    behavior: url(PIE.htc);
+}
+
+.papernumberhead {
+    background: #eeeeff;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 12px;
+    font-size: 1.25em;
+    text-align: center;
+    behavior: url(PIE.htc);
+}
+
+.tablerow
+/* paper code */
+
+{
+    text-align: left;
+    vertical-align: middle;
+}
+
+
+/* .pcr {
+    background:             #eeeeff;
+    -moz-border-radius:      8px;
+    -webkit-border-radius:   8px;
+    border-radius:           8px;
+    padding:                 8px;
+    margin:                  0px;
+    text-align:              right;
+    behavior:                url(PIE.htc);
+   }
+*/
+
+
+/* --------------------------------*/
+
+
+/* Talk/Slides Icon
+   Sound Icon
+   Poster Icon      */
+
+.talkicon {
+    margin-top: -2.5em;
+    margin-bottom: 1.0em;
+    text-align: right;
+}
+
+.soundicon {
+    margin-top: -2.5em;
+    margin-bottom: 1.0em;
+    text-align: right;
+}
+
+.postericon {
+    margin-top: -2.5em;
+    margin-bottom: 1.0em;
+    text-align: right;
+}
+
+.posterslide-wb {
+    font-weight: bold;
+    white-space: normal;
+    font-size: 100%;
+    color: blue;
+}
+
+.posterslide-wb:hover {
+    font-size: 100%;
+    color: #ffffff;
+    background-color: #3399ff;
+}
+
+.autl {
+    font-weight: normal;
+    white-space: normal;
+    font-size: 100%;
+}
+
+.autl:hover {
+    font-size: 100%;
+    color: #ffffff;
+    background-color: #3399ff;
+}
+
+.exp {
+    text-align: right;
+    font-weight: bold;
+    white-space: normal;
+    font-size: 100%;
+    color: black;
+}
+
+.exp:hover {
+    /*   font-style:                italic; */
+    font-size: 100%;
+    color: #ffffff;
+    background-color: #3399ff;
+}
+
+.exp-wb {
+    font-style: italic;
+    font-weight: normal;
+    white-space: normal;
+    font-size: 100%;
+    color: black;
+}
+
+.exp-wb:hover {
+    font-style: italic;
+    font-size: 100%;
+    color: #ffffff;
+    background-color: #3399ff;
+}
+
+
+/* --------------------------------*/
+
+
+/* Talk/Slides Icon
+   Sound Icon
+   Poster Icon      */
+
+.rt {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.trt {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.srt {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.tabledef {
+    border-spacing: 4px 4px;
+    text-align: center;
+    vertical-align: middle;
+    /*     width:                  100%;   */
+}
+
+
+/* Strike through */
+
+.strike {
+    text-decoration: line-through;
+}
+
+.sprr {
+    visibility: hidden;
+}
+
+#page-wrap {
+    width: 600px;
+    margin: 15px auto;
+    position: relative;
+}
+
+#sidebar {
+    width: 190px;
+    position: fixed;
+    margin-left: 410px;
+}
+
+.xbtooltip {
+    display: none;
+    position: absolute;
+    color: #000000;
+    background-color: #c0e0ff;
+}
+
+.xbtooltipstr {
+    position: relative;
+    /*  background-color:          #eeeeff; */
+    background-color: #c0e0ff;
+}
+
+.xbtooltipstrc {
+    display: none;
+    position: absolute;
+    color: #ff0000;
+    background-color: #ffff00;
+}
+
+.wordbib {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 9pt;
+    font-style: normal;
+    text-align: justify;
+    /* text-decoration: 		none; */
+}
+
+#Menu {
+    border-bottom: 10px solid #a0cef8;
+    white-space: nowrap;
+}
+
+#Menu ul {
+    text-align: left;
+    /* We are using text-align: center on ul to horizontally align our menu to the page.
+                                        If you want the menu aligned left or right just change text-align to either left or right */
+    margin: 0 0 8px 0;
+    /* Just some margin to align the blue border below the menu    (ori: 0 0 5px 0) */
+}
+
+#Menu li {
+    display: inline;
+    /* Menu links are horizontally aligned using display: inline */
+}
+
+#Menu li a {
+    padding: 4px 0 5px 5px;
+    /* 'Display: block' won't work in this example, instead we are
+                                           using padding to make the hole tab a clickable link */
+    color: #5d5350;
+    text-decoration: none;
+    font-weight: bold;
+    /* Rollover effect using "Fast rollovers without preload" concept for the left part of the tab */
+    background: url(../im0ges/tabbed-menu-left.gif) no-repeat left top;
+}
+
+#Menu li a:hover {
+    background: url(../im0ges/tabbed-menu-left.gif) no-repeat left bottom;
+}
+
+#Menu li a span {
+    padding: 4px 8px 5px;
+    /* 8px 6px 5px 0; */
+    /* Rollover effect using "Fast rollovers without preload" concept for the right part of the tab */
+    background: url(../im0ges/tabbed-menu-right.gif) no-repeat right top;
+}
+
+#Menu li a:hover span {
+    background: url(../im0ges/tabbed-menu-right.gif) no-repeat right bottom;
+}
+
+.nomat {
+    color: #ff0000;
+    background-color: #ffff00;
+    font-weight: bold;
+    font-size: 1em;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    padding: 6px;
+    margin: 5px 10px 5px;
+    display: block;
+    /*    egal */
+    text-align: left;
+    column-fill: balance;
+    -moz-box-shadow: 2px 2px 4px #000000;
+    -webkit-box-shadow: 2px 2px 4px #000000;
+    box-shadow: 2px 2px 4px #000000;
+    behavior: url(PIE.htc);
+}

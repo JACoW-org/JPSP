@@ -1,0 +1,313 @@
+%\documentclass[9pt,pagesize,headexclude,footexclude,halfparskip-]{scrbook}
+\documentclass[9pt,twoside]{scrbook}
+
+\setlength\parindent{0pt}
+
+\usepackage[greek, english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fourier,enumitem,color,ifthen}
+\usepackage{calc}
+\usepackage{scrpage2}
+\usepackage{eso-pic, graphicx}
+\usepackage[scaled=.95]{helvet}
+\usepackage[scaled=.92]{beramono}   %.92
+
+\usepackage[papersize={4.125in,9.5in}, body={235pt, 610pt},
+            top=34pt, left=.5in, head=8pt, headsep=5pt, footskip=17pt]{geometry}
+
+\usepackage{hyperref}
+\hypersetup{pdfpagelayout=TwoPageRight,
+            pdfstartview=Fit,
+            pdfpagemode=UseNone,
+            linktocpage=false,
+            pdfborder={0 0 0},
+            colorlinks=false,
+            unicode=true}
+
+\usepackage[normalem]{ulem}
+\usepackage{fancybox}
+
+\hyphenation{Qua-dru-poles Qua-dru-pole Mik-hai-li-chen-ko Ka-na-rey-kin Tka-chen-ko Fak-to-ro-vich Du-brov-skiy Most-haf Iva-ni-sen-ko Neu-bauer Ja-mil-kow-ski Teru-nu-ma Po-pie-lar-ski Tera-shi-ma Ya-ra-my-shev Ko-zhu-ha-rov Win-kel-mann Ratzin-ger Smir-nov Floett-mann Buerk-mann-Gehr-lein Pal-mie-ri Ko-she-lev Chou-han Ga-vri-lov Cle-men-te Kraw-czyk Ko-ba-ya-shi So-be-nin Buerk-mann-Gehr-lein Yoshi-ka-wa Pas-qui-nel-li Yoko-ya-ma Mar-chet-to Ya-kov-lev Tiu-nov Gu-sa-ro-va Tan-ta-wi Mat-veen-ko Sche-los-ke De-mon-stra-tor Ko-no-nen-ko Emittance-ex-change Tolle-strup Naka-moto
+Leo-nova Vorozht-sov Gru-chal-la Ka-ne-ki Iso-chro-nous Oli-viei-ra Miya-mo-to Kreutz-kamp}
+
+\tolerance=2000
+\setlength{\emergencystretch}{6pt}
+
+\newcommand\high[1]{\textsuperscript{#1}}
+\newcommand\low[1]{\textsubscript{#1}}
+%\newcommand\high[1]{\ensuremath{\mathrm{$^#1$}}}
+%\newcommand\low[1]{\ensuremath{\mathrm{$_#1$}}}
+%%%\newcommand\high[1]{\ensuremath{^#1}}
+\newcommand\NewPage{\newpage}
+
+\newcommand\PapLine[2]{\makebox[\mywidth][l]{\descfont#1}{#2}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Color and Session Definition for North-American IPACs
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  n-cirlin  01: Circular and Linear Colliders
+%  n-synfel  02: Synchrotron Light Sources and FELs
+%  n-srcalt  03: Particle Sources and Alt. Accel. Techniques
+%  n-hadron  04: Hadron Accelerators
+%  n-dynami  05: Beam Dynamics & Electromagnetic Fields
+%  n-instru  06: Instrumentation
+%  n-techno  07: Accelerator Technology
+%  n-applic  08: Applications of Accelerators
+%  n-opclsp  09: Opening, Closing, Special Sessions
+%  n-posses  10: Poster Sessions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{n-cirlin}{rgb}{0.961, 0.639, 0.945} %{1.000, 0.600, 0.800}
+\definecolor{n-synfel}{rgb}{0.898, 0.741, 0.608} %{0.988, 0.835, 0.706}
+\definecolor{n-srcalt}{rgb}{0.745, 0.784, 0.663} %{0.847, 0.894, 0.737}
+\definecolor{n-hadron}{rgb}{0.663, 0.753, 0.863} %{0.773, 0.851, 0.945}
+\definecolor{n-dynami}{rgb}{0.929, 0.929, 0.529} %{1.000, 1.000, 0.000}
+\definecolor{n-instru}{rgb}{0.937, 0.588, 0.592} %{0.565, 0.706, 0.886}
+\definecolor{n-techno}{rgb}{0.757, 0.718, 0.804} %{0.200, 0.400, 0.663}
+\definecolor{n-applic}{rgb}{0.608, 0.831, 0.702} %{0.565, 0.706, 0.886}
+\definecolor{n-opclsp}{rgb}{0.200, 0.400, 1.000}
+\definecolor{n-posses}{gray}{.75}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\NewDay}[4]{\clearpage\ohead{#1}}
+%\newcommand{\NewDay}[4]{\clearpage\ohead{#4 #2 #1, 20#3}}   % removed comma after weekday
+\newcommand\OP{\textbf{O}}
+\newcommand\Aday{\OP{} May 21}
+%---------------------------------------------------------------------------------------
+% NewDay
+%     #
+%     # 1       {day}
+%     # 2       {month}
+%     # 3       {year [yy]}
+%     # 4       {day of week}
+%
+\newdimen\RFirst
+\newdimen\RSecond
+\setlength\RFirst{-15mm}
+\setlength\RSecond{230mm}
+
+\newcommand{\NewDay}[4]{\clearpage%\ohead{#4 #2 #1, 20#3}%
+                        \setlength\RFirst{\RFirst+25mm}%
+                        \setlength\RSecond{\RSecond-25mm}%
+                        \renewcommand\Aday{\OP{} #2 #1}}
+
+%\newcommand{\NewPart}[1]{\clearpage%
+%                        \renewcommand\Aday{#1}}
+
+\newcommand\Vdate{01-Aot-1900}
+\newcommand\Vstarttim{00}
+\newcommand\Vendtim{00}
+\newcommand\Vprestyp{OP}
+\newcommand\Vlocation{---}
+
+\raggedbottom
+
+\setkomafont{pagefoot}{\SetUpFS\rmfamily}
+\setkomafont{pagehead}{\Large\normalfont\rmfamily\bfseries}
+\ihead{}
+\ohead{}
+\chead{}
+\ofoot{}
+\ifoot{}
+\cfoot{}
+\rofoot{\pagemark}
+\lefoot{\pagemark}
+\cefoot{New Orleans, LA, USA, May 21--25, 2012}
+\cofoot{IPAC 2012}
+
+\iffalse
+\lehead{\AddToShipoutPicture*{\fontsize{16.0}{16.0}\selectfont%
+            \AtPageUpperLeft{\makebox(0,0)[lt]{%
+                             \rotatebox{90}{\rule{\RSecond}{6mm}%
+                             \rotatebox{180}{\raisebox{-4mm}{\makebox[25mm]{\Aday}}}
+                             \rule{\RFirst}{6mm}%
+                             }}}%
+        }%
+       }
+\fi
+\rohead{\AddToShipoutPicture*{\fontsize{16.0}{16.0}\selectfont%
+            \AtPageUpperLeft{\kern\myloc{\makebox(0,0)[lt]{%
+                             \rotatebox{-90}{\rule{\RFirst}{6mm}%
+                             \rotatebox{180}{\raisebox{-4mm}{\makebox[25mm]{\Aday}}}%
+                             \rule{\RSecond}{6mm}%
+                             }}}}%
+                              }%
+       }
+
+\pagestyle{scrheadings}
+
+\newlength\sessionheadwidth
+\setlength\sessionheadwidth\textwidth
+\addtolength\sessionheadwidth{-2\fboxrule}
+\addtolength\sessionheadwidth{-2\fboxsep}
+
+  \newlength\myloc
+  \addtolength{\myloc}{\paperwidth}
+  \addtolength{\myloc}{-5.8mm}
+
+%\addtolength\sessionheadwidth{-10pt}
+
+\newcommand\bold[1]{#1}
+\newcommand\bInst[1]{#1}
+\newcommand\SetUpFS{\fontsize{8.5}{9}\selectfont}
+\newcommand\TxtAuthor{\fontsize{8.5}{11.5}\selectfont}
+\newcommand\TxtItalic{\fontsize{8.5}{11.5}\itshape\selectfont}
+\newcommand\TxtBold{\fontsize{8.5}{11.5}\selectfont}
+\newcommand\TxtType{\fontsize{8.5}{11.5}\selectfont}
+\definecolor{grau}{gray}{.90}
+\renewcommand\hypertarget[1]{}
+\renewcommand\hyperlink[2]{#2}
+
+\definecolor{sessionheader}{gray}{.75}
+%    \SessionHeader{posses}{31-Mar-11}{16:00}{17:30}{Oral}{Broadway Ballroom}
+%       1  color
+%       2  date
+%       3  start time
+%       4  end time
+%       5  presentation type
+%       6  Location
+%
+\newcommand\SessionHeader[6]{%
+            \renewcommand\Vdate{#2}
+            \renewcommand\Vstarttim{#3}
+            \renewcommand\Vendtim{#4}
+            \renewcommand\Vprestyp{#5}
+            \renewcommand\Vlocation{#6}%
+             \fcolorbox{black}{#1}{\parbox{\sessionheadwidth}{#2\quad#3 -- #4\hfill#5\hfill#6\par}}\par\vspace*{-4pt}}
+
+
+\newlength\sessionbodywidth
+\setlength\sessionbodywidth\sessionheadwidth
+
+\newcommand\sessioncol{white}
+%     #   \SessionBody [5]
+%     # 1       {session-color}
+%     # 2       {session-abbr-string}
+%     # 3       {session-name-string}
+%     # 4       {session-classification-string}
+%     # 5       {session-chair-string}
+\newcommand\SessionBody[5]{%
+\fcolorbox{black}{#1}{\parbox{\sessionbodywidth}{%
+\centering\textbf{\textsf{#2} --- \textsf{#3}}\ifthenelse{\equal{#5}{}}{}{\par\textbf{Chair:} #5}}}\vspace*{-6pt}}
+
+%---------------------------------------------------------------------------------------
+% Paper
+%        #     \Paper
+%        #     1    {paper_code}
+%        #     2    {main classification}
+%        #     3    {sub classification}
+%        #     4    {}
+%        #     5    {}
+%        #     6    {}
+%        #     7    {title}
+%        #     8    {authors + affiliation}
+%        #     9    {abstract}
+\newcommand\Paper[9]{%
+%                        \item[#1] \hspace*{-1.5mm}\textbf{#7} -- \textit{#8} \vspace*{-7pt}
+                        \item[#1] \textbf{#7} -- \textit{#8}
+%w/o abs%                        \newline
+%w/o abs%                        \begingroup\SetUpFS
+%w/o abs%                            #9\par
+%w/o abs%                        \endgroup%
+                                 \vspace*{-5pt}
+}
+
+\newcommand\PaperWD[4]{%      Paper is for Posters which is withdrawn
+\item[\boxput*(0.25,-5.5){\begin{minipage}{\mywidthi}\textnormal{{\textit{contribu-\\[-1mm] tion with-\\[-1mm] drawn}}}\end{minipage}}%
+            {\sout{#1}}]  \textbf{#2} -- \textit{#3}\vspace*{-7pt}%
+%\item[#1]  {#2} -- \textit{#3}\vspace*{-6pt}%
+}
+%        {paper_code}
+%        {title}
+%        {authors + affiliation}
+%        {abstract} [==> not printed <==]
+%
+
+\newlength\TimWid
+% PaperAbs
+%        #     \Paper/\PaperAbs
+%        #     1    {paper_code}
+%        #     2    {main classification}
+%        #     3    {sub classification}
+%        #     4    {talk_btime}
+%        #     5    {talk_etime}
+%        #     6    {talk_duration}
+%        #     7    {title}
+%        #     8    {authors + affiliation}
+%        #     9    {abstract}
+%\newcommand\PaperAbs[9]{\addcontentsline{toc}{subsection}{\protect\PapLine{#1}{#7}}%    PaperAbs is for Orals
+%                       \item[{\setlength\fboxsep{2pt}\colorbox{posses}{\makebox[\mywidth-2\fboxsep]{\rmfamily#4}}}]\mbox{}%
+%                        \item[#1] \textbf{\hspace*{-1.5mm}\Large#7}  \newline
+%                        \textit{\Large#8}
+%                        \newline
+%                        \begingroup\fontsize{10}{11}\selectfont
+%                            #9\par
+%                        \endgroup
+%                        }
+\newcommand\PaperAbs[9]{%
+                         \item[\mbox{\parbox[t][0pt][t]{\mywidth}{#1\\%}}
+ %                               \begin{minipage}{\mywidth}#1\\\vspace*{10pt}%
+                                   {\settowidth\TimWid{\usekomafont{descriptionlabel}#1}%
+                                    \setlength\fboxsep{1pt}%
+                                    \raisebox{1.3mm}[0mm][0mm]{%
+                                                                \colorbox{n-posses}{\makebox[\TimWid-2\fboxsep][c]{\rmfamily#4}}
+                                                               }%
+                                     }}}%
+ %                               \end{minipage}
+                        ]\hbadness 100000
+                        \textbf{#7}  --
+                        \textit{#8}%
+                        \newline
+                        \begingroup\SetUpFS
+                            #9\par
+                        \endgroup%
+                         \vspace*{-5pt}
+                        }
+
+%
+% Classification Change
+%    \MainClass{#1 Paper Main Classification}
+%
+%\newcommand\MainClass[1]{\fcolorbox{black}{posses}{\parbox{\sessionbodywidth}{\textsf{#1}}}}
+%\newcommand\MainClass[1]{\item[\fcolorbox{black}{n-posses}{\textsf{#1}}]\mbox{}\vspace*{-8pt}}
+%\renewcommand\MainClass[1]{\item[\fcolorbox{black}{n-posses}{\textsf{#1}}]\mbox{}\vspace*{-8pt}}
+\newcommand\MainClass[1]{}
+
+\setkomafont{descriptionlabel}{\upshape\mdseries\ttfamily}
+\newlength\mywidth
+\newlength\mywidthi
+\settowidth\mywidth{\usekomafont{descriptionlabel}MO6PFP0}
+\settowidth\mywidthi{\usekomafont{descriptionlabel}MO6PFP0~}
+\renewcommand*{\descriptionlabel}[1]{%
+  \hspace{\labelsep}\makebox[\mywidth][l]{\descfont #1}%
+}
+\newenvironment{PaperList}%
+{\begin{description}[leftmargin=\mywidthi,font=\usekomafont{descriptionlabel}]}%
+{\end{description}}
+
+%
+% better hyphenation of Acronyms separated by "/" like all institutes in Daresbury
+%
+\def\slash{/}
+\catcode`\/=\active
+\def/{\slash\discretionary{}{}{}}
+
+\begin{document}
+    %
+    % read script generated data
+    %
+    \input{abstr-info-edit}
+
+\iffalse
+     \newpage
+     \renewcommand\TxtItalic{\fontsize{9}{11.5}\ttfamily\bfseries\selectfont}
+
+     \smallskip
+     \ohead{Author List}
+     {\tt\TxtItalic Boldface} papercodes indicate primary authors
+
+         \input{authtexidx}
+\fi
+
+\end{document}

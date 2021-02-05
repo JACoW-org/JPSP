@@ -1,0 +1,79 @@
+\newlength\IndxAlphBoxWidth
+\setlength\IndxAlphBoxWidth{\textwidth-2.5mm}
+\newlength\IndxNameBoxWidth
+\setlength\IndxNameBoxWidth{114pt}
+\newlength\IndxCodeBoxWidth
+\setlength\IndxCodeBoxWidth{139pt}
+\newcommand\TxtAuthor{\fontsize{10}{11}\selectfont}
+\newcommand\TxtBold{\fontsize{10}{11}\bfseries\sffamily\selectfont}
+\newcommand\TxtType{\ttfamily\fontsize{10}{11}\selectfont}
+\newcommand\TxtItalic{\fontsize{10}{11}\ttfamily\bfseries\selectfont}
+\newcommand\TxtNormal{\fontsize{10}{11.5}\ttfamily\mdseries\selectfont}
+
+
+        \sffamily
+
+        \fancyfoot[RE,LO]{\large\sffamily Preface}%
+        \fancyfoot[RO,LE]{\large\sffamily\thepage}
+        \fancyfoot[CO,CE]{}
+
+        \refstepcounter{section}
+        \addcontentsline{toc}{section}{Preface}
+        \thispagestyle{empty}
+\IfFileExists{../contents/poster.pdf}{%
+              \includepdf[pagecommand={}]{../contents/poster.pdf}}%
+             {\mbox{}\vfill
+             {\centering \textsf{\Huge Conference Poster not found} }
+              \vfill}
+
+        \clearpage
+
+\IfFileExists{../contents/group_photo.pdf}{%
+              \includepdf[pagecommand={}]{../contents/group_photo.pdf}}%
+             {\mbox{}\vfill
+             {\centering \textsf{\Huge Conference Group Photo not found} }
+              \vfill}
+
+        \clearpage
+
+\refstepcounter{subsection}
+\addcontentsline{toc}{subsection}{Foreword}
+\fancyfoot[RE,LO]{{\sffamily Preface\\Foreword}}
+
+\IfFileExists{../papers/foreword.pdf}{%
+              \includepdf[pagecommand={}]{../papers/foreword.pdf}}%
+             {\mbox{}\vfill
+             {\centering \textsf{\Huge Preface not yet received} }
+              \vfill}
+
+\clearpage
+
+\refstepcounter{subsection}
+\addcontentsline{toc}{subsection}{Committees}
+\fancyfoot[RE,LO]{{\sffamily Preface\\Committees}}
+\fancyfoot[RO,LE]{\large\sffamily\thepage}
+\IfFileExists{../papers/committees.pdf}{%
+              \includepdf[pagecommand={}]{../papers/committees.pdf}}%
+             {\mbox{}\vfill
+             {\centering \textsf{\Huge Committees not yet received} }
+              \vfill}
+
+
+\vfill
+\clearpage
+
+\refstepcounter{subsection}
+\addcontentsline{toc}{subsection}{\contentsname}
+\fancyfoot[RE,LO]{{\sffamily \contentsname}}
+\fancyhead[LE,LO,RO,RE]{}
+
+\tableofcontents
+
+\vfill
+
+\cleardoublepage
+
+\refstepcounter{section}
+\addcontentsline{toc}{section}{Papers}
+%\fancyfoot[RE,LO]{{\sffamily \mbox{}\\Papers}}
+\fancyfoot[RE,LO]{}

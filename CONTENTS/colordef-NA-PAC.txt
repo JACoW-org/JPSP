@@ -1,0 +1,14 @@
+\definecolor{paccolacc}{rgb}{1.00, 0.00, 0.00}
+\definecolor{pacadvcon}{rgb}{0.970, 0.588, 0.275}
+\definecolor{pacligsou}{rgb}{0.553, 0.706, 0.890}
+\definecolor{pacinscon}{rgb}{0.859, 0.933, 0.953}
+\definecolor{pacsoumed}{rgb}{0.800, 1.000, 0.800}
+%\definecolor{lincol}{rgb}{0.80, 1.00, 0.80}
+%\definecolor{hadacc}{rgb}{0.80, 1.00, 1.00}
+\definecolor{pacbeadyn}{rgb}{1.00, 0.80, 0.00}
+%\definecolor{beains}{rgb}{0.60, 0.80, 1.00}
+\definecolor{pacacctec}{rgb}{0.992, 0.914, 0.851}
+\definecolor{pacappacc}{rgb}{0.800, 0.750, 0.850}
+\definecolor{pacopeclo}{rgb}{1.000, 0.600, 0.800}
+\definecolor{pactutori}{gray}{.94}
+\definecolor{posses}{gray}{.90}

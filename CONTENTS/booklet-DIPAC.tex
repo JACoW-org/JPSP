@@ -1,0 +1,209 @@
+\documentclass[9pt,pagesize,headexclude,footexclude,halfparskip-]{scrbook}
+
+
+%\usepackage[papersize={148mm, 210mm}, body={3in, 8in},
+%            top=34pt, left=.5in, head=8pt, headsep=5pt, footskip=17pt]{geometry}
+
+\usepackage[papersize={148mm,210mm}, twoside, bindingoffset=10mm, %, showframe
+            top=15mm, bottom=20mm, inner=10mm, outer=16mm]{geometry}
+
+% 22.5 in² = 62.5%  (37.5% empty)
+% 36.0 in²
+% 3" wide x 7.5" high
+%
+% 115 pages with run-in numbers
+% 122 pages with full paper codes (7.5in)
+% 116 pages with running numbers (8.0in)
+% 111 pages with full paper codes -run-in- (8.0in)
+% 106 pages with full paper codes -run-in- highlighted by frame box (8.0in)
+%
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{enumitem,color,ifthen,scrpage2}
+\usepackage{tgpagella,pxfonts}
+%\usepackage[scaled=.95]{helvet}
+\usepackage[scaled=1]{beramono}
+
+\hyphenation{Qua-dru-poles Mik-hai-li-chen-ko Ka-na-rey-kin}
+
+\usepackage{hyperref}
+\hypersetup{pdfpagelayout=TwoPageRight,
+            pdfstartview=Fit,
+            pdfpagemode=UseNone,
+            linktocpage=false,
+            pdfborder={0 0 0},
+            colorlinks=false,
+            unicode=true}
+
+\tolerance=2000
+\setlength{\emergencystretch}{6pt}
+\setlength\fboxsep{1.3pt}
+
+\definecolor{paccolacc}{rgb}{1.00, 0.00, 0.00}
+\definecolor{pacadvcon}{rgb}{0.970, 0.588, 0.275}
+\definecolor{pacligsou}{rgb}{0.553, 0.706, 0.890}
+\definecolor{pacinscon}{rgb}{0.859, 0.933, 0.953}
+\definecolor{pacsoumed}{rgb}{0.800, 1.000, 0.800}
+%\definecolor{lincol}{rgb}{0.80, 1.00, 0.80}
+%\definecolor{hadacc}{rgb}{0.80, 1.00, 1.00}
+\definecolor{pacbeadyn}{rgb}{1.00, 0.80, 0.00}
+%\definecolor{beains}{rgb}{0.60, 0.80, 1.00}
+\definecolor{pacacctec}{rgb}{0.992, 0.914, 0.851}
+\definecolor{pacappacc}{rgb}{0.800, 0.750, 0.850}
+\definecolor{pacopeclo}{rgb}{1.000, 0.600, 0.800}
+\definecolor{pactutori}{gray}{.94}
+\definecolor{posses}{gray}{.90}
+\definecolor{grau}{gray}{.90}
+\newcommand\bold[1]{\it #1}
+\newcommand\bInst[1]{#1}
+
+\renewcommand\hypertarget[2]{}
+\renewcommand\hyperlink[2]{#2}
+
+\newcommand\high[1]{\textsuperscript{#1}}
+\newcommand\low[1]{\textsubscript{#1}}
+%\newcommand\high[1]{\ensuremath{\mathrm{$^#1$}}}
+%\newcommand\low[1]{\ensuremath{\mathrm{$_#1$}}}
+%%%\newcommand\high[1]{\ensuremath{^#1}}
+
+\newcommand\TxtAuthor{\fontsize{8.5}{11.5}\selectfont}
+\newcommand\TxtItalic{\fontsize{9.0}{11.5}\ttfamily\bfseries\selectfont}
+\newcommand\TxtBold{\fontsize{8.5}{11.5}\bfseries\sffamily\selectfont}
+\newcommand\TxtType{\ttfamily\fontsize{8.5}{11.5}\selectfont}
+\newcommand\TxtMain{\ttfamily\fontsize{9.0}{11.5}\bfseries\selectfont}
+
+\newcommand{\NewDay}[4]{\clearpage\ohead{#4, #2 #1}}
+
+\setkomafont{pagefoot}{\normalfont\rmfamily}
+\setkomafont{pagehead}{\Large\normalfont\rmfamily\bfseries}
+\ihead{}
+\ohead{}
+\chead{}
+\ofoot{}
+\ifoot{}
+\cfoot{}
+\rofoot{\pagemark}
+\lefoot{\pagemark}
+\refoot{}   %2011 Particle Accelerator Conference}
+\lofoot{}   %New York, U.S.A., March 28 -- April 1}
+
+\pagestyle{scrheadings}
+
+\newlength\sessionheadwidth
+\setlength\sessionheadwidth\textwidth
+\addtolength\sessionheadwidth{-2\fboxrule}
+\addtolength\sessionheadwidth{-2\fboxsep}
+%\addtolength\sessionheadwidth{-10pt}
+%    \SessionHeader{posses}{31-Mar-11}{16:00}{17:30}{Oral}{Broadway Ballroom}
+%       1  color
+%       2  date
+%       3  start time
+%       4  end time
+%       5  presentation type
+%       6  Location
+%
+\definecolor{sessionheader}{gray}{.75}
+% SessionHeader: #1 date/time, #2 Location
+\newcommand\SessionHeader[6]{%
+\fcolorbox{sessionheader}{sessionheader}{\parbox{\sessionheadwidth}{\centering#2\quad#3 -- #4\par\ifthenelse{\equal{#6}{}}{}{#6\par}}}\par}
+
+\newlength\sessionbodywidth
+\setlength\sessionbodywidth\sessionheadwidth
+\newcommand\sessioncol{white}
+% SessionBody: #1 Session-color #2 Session-name-string -- Session-classification #3 Chair
+% -> empty <-- \newcommand\SessionBody[3]{}
+%     #   \SessionBody [5]
+%     # 1       {session-color}
+%     # 2       {session-abbr-string}
+%     # 3       {session-name-string}
+%     # 4       {session-classification-string}
+%     # 5       {session-chair-string}
+% SessionBody: #1 Session-color #2 Session-name-string -- Session-classification #3 Chair
+\newcommand\SessionBody[5]{%
+\fcolorbox{black}{#1}{\parbox{\sessionbodywidth}{%
+\centering\textbf{\textsf{#3}}\ifthenelse{\equal{#5}{}}{}{\par\textbf{Chair:} #5}}}}
+%     1   {session-color}
+%     2   {session-name-string}
+%     3   {session-classification-string}
+%     4   {session-chair-string}
+
+%
+%     \PaperAbs{#1 Papercode}%
+%              {#2 Main Classification}{#3 Sub Classification}%
+%              {#4 start time}{#5 end time}{#6 duration}%
+%              {#7 Title}%
+%              {#8 authors....}%
+%              {#9 Abstract}
+%
+\newcommand\Paper[9]{%      Paper is for Posters
+%\item[\fbox{#1}]  \textbf{#7} -- \textit{#8}%
+\item[#1]  \textbf{#7} -- \textit{#8}%
+\\
+%\newline
+\begin{small}\fontsize{9}{10}\selectfont
+#9\par
+\end{small}
+}
+
+%
+%
+%     \PaperAbs{#1 Papercode}%
+%              {#2 Main Classification}{#3 Sub Classification}%
+%              {#4 start time}{#5 end time}{#6 duration}%
+%              {#7 Title}%
+%              {#8 authors....}%
+%              {#9 Abstract}
+%
+\newcommand\PaperAbs[9]{%    PaperAbs is for Orals
+%\item[\fbox{#1}] \textbf{#7} -- \textit{#8}%\\
+\item[#1] \textbf{#7} -- \textit{#8}\\
+%\newline
+\begin{small}\fontsize{9}{10}\selectfont
+#9\par
+\end{small}
+}
+
+%
+% Classification Change
+%    \MainClass{#1 Paper Main Classification}
+%
+%\newcommand\MainClass[1]{\fcolorbox{black}{posses}{\parbox{\sessionbodywidth}{\textsf{#1}}}}
+\newcommand\MainClass[1]{\item[\fcolorbox{black}{posses}{\textsf{#1}}]\mbox{}\vspace*{-4pt}}
+
+\setkomafont{descriptionlabel}{\upshape\mdseries\ttfamily}
+\newlength\mywidth
+\newlength\mywidthi
+\settowidth\mywidth{\usekomafont{descriptionlabel}MOPO009}
+%\settowidth\mywidth{\usekomafont{descriptionlabel}MOP}
+\settowidth\mywidthi{\usekomafont{descriptionlabel}MOPO009~}
+%\settowidth\mywidthi{\usekomafont{descriptionlabel}THO\,}
+%\settowidth\mywidthi{\usekomafont{descriptionlabel}}
+\renewcommand*{\descriptionlabel}[1]{%
+  \hspace{\labelsep}\makebox[\mywidth][l]{\descfont #1}%
+}
+\newenvironment{PaperList}%
+{\begin{description}[leftmargin=\mywidthi,font=\usekomafont{descriptionlabel}]}%
+{\end{description}}
+
+%
+% better hyphenation of Acronyms separated by "/" like all institutes in Daresbury
+%
+\def\slash{/}
+\catcode`\/=\active
+\def/{\slash\discretionary{}{}{}}
+
+
+\begin{document}
+    \setcounter{page}{1}
+    %
+    % read script generated data
+    %
+    \input{abstr-info}
+
+
+    \clearpage
+    \ohead{List of Authors}
+    \textbf{\texttt{Bold}} papercodes indicate primary authors
+
+    \input{authtexidx}
+\end{document}
